@@ -1,0 +1,35 @@
+<h1>Volunteer Skill</h1>
+<table border="0">
+    <thead>
+        <tr>
+            <th>Skill ID</th>
+            <th>Skill Name</th>
+            <th>Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($skill_list as $skill) {
+        ?>
+        <tr>
+            <td><?php echo $skill->skill_type_id; ?></td>
+            <td>
+                
+                    <?php echo $skill->skill_type_name; ?>
+                
+            </td>
+            <td>
+                <input type="checkbox" name="<?php echo $skill->skill_type_id; ?>" />
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+<br/>
+<div>
+    <input type="submit" value="Save" name="save" />
+</div>
+<br/>
+<div>
+    <a href="index.php?c=vmanagement&a=index">Back to events list</a>
+</div>

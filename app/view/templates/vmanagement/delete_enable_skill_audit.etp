@@ -1,0 +1,6 @@
+<div>Skill deleted</div>
+<br/>
+<div id="back-btn">
+    <a href="index.php?c=vmanagement&a=enable_skill_audit">Back to volunteer skill</a>
+</div>
+        

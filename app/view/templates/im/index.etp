@@ -1,0 +1,137 @@
+<?php $disabledAction=""; $errorMessage=""; if(count($messages) <=0 ){ $disabledAction="disabled=disabled"; $errorMessage="<div style='text-align:center'><label style='color:red'>". $error. "</label></div>"; } ?>
+<!-- IM HOME PAGE HEADER --->
+<div id="im-content-header">
+    <div id="left-im-header">
+        <img src="<?php echo IMAGES_BACKEND. 'big-mail.png' ?>"  />
+        <label>Messages</label>	
+    </div>
+    <div id="right-im-header">
+        <input class ="im-button-style" id="btn-message" type="button" value="+ New Message" /><!--onclick="window.location = './index.php?c=im&a=newMessage'"-->
+        <span id="action-container">
+            <input class ="im-button-style" id="btn-action" type="button" value="Action" <?php echo $disabledAction?>/>
+            <div id="action-menu">
+                <a href="./index.php?c=im&a=actionMessage&m=<?php echo $optionSelected; ?>&v=D">Delete Messages</a>
+                <?php if($optionSelected==0){ echo "<a href='./index.php?c=im&a=actionMessage&m=$optionSelected&v=M'>Mark As Unread</a> "; } ?>
+                <?php if($optionSelected==0&& $user_type != 1 || ($optionSelected==2 && $user_type != 1)){ echo "<a href='./index.php?c=im&a=actionMessage&m=$optionSelected&v=R'>Report Message</a>"; }?>
+            </div>
+            
+        </span>
+    </div>
+</div>
+<hr />
+<!-- IM HOME PAGE HEADER --->
+
+<div id="breakcrumb" style="margin-left:10px;clear:both;">
+    <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=im&a=index">Messages</a> >
+        <?php if($optionSelected==0){echo "Inbox"; }else if($optionSelected==1){ echo "Sent"; }else if($optionSelected==2){ echo "IM Conversation"; }?>
+    </div>
+<hr/>
+
+
+<!-- BODY --->
+<div id="im-header-function">
+    <div id="im-content-search-container">
+        <input id="im-content-search-textbox" type="text" value="Search......" maxlength="100" onFocus="clearSearchField(this.id,'im-content-search-container')" onBlur="setSearchField(this.id,'im-content-search-container')" <?php echo $disabledAction?> />
+        <img src="<?php echo IMAGES_BACKEND. 'search.jpg' ?>" width="20"  height="20" title="search" alt="Search" />
+    </div>
+    <div id="im-panel">
+        <form method="POST" action="./index.php?c=im">
+            <label>View:</label>
+            <select name="messageFilter" onchange="form.submit()">
+                <option value="0" <?php if($optionSelected==0){ echo "selected='selected'"; } ?> >Inbox</option>
+                <option value="1" <?php if($optionSelected==1){ echo "selected='selected'"; } ?>>Sent</option>
+                <option value="2" <?php if($optionSelected==2){ echo "selected='selected'"; } ?> >IM Conversation</option>
+            </select>
+        </form>
+    </div>
+</div>
+<hr />
+
+<div>
+<div id="im-content-messages">
+    <?php if($success!="" || strlen($success>0)){
+    echo "<div id='success-msg'><div><img src='".IMAGES_BACKEND."success.png' width='15'  height='15' title='success' alt='success' /> <label>".$success."</label></div></div>";
+    }
+    ?>
+
+
+    <?php 
+    echo $errorMessage;
+    if(count($messages)>0){
+    foreach ($messages as $message) { 
+        $date = $message->unixtime;
+        $date = date('M d', $date);
+    ?>
+    <label>
+        <div id="im-message-content">
+            <div id="im-content-details" style="width:100%;<?php if($optionSelected==0 && $message->received == 0) {echo "background:#f2f2f2";}; ?>">
+                <a href="./index.php?c=im&a=viewMessage&<?php echo "m=$optionSelected&mid=$message->message_id";  ?>" > 
+                    <div id="im-user-img">
+                            <img src="<?php echo IMAGES_BACKEND. $message->avatar ?>" width="50px" height="50px" />
+                    </div>
+                    <div id="im-message-container" style="width:500px;">
+                            <div id="im-message-details">
+                                    <p><strong><?php echo $message->first_name." ". $message->last_name ?></strong></p>
+                                    <div id="im-message" style="width:200px;"><?php echo $message->content ?></div>
+                            </div>
+                            <div id="im-message-function">
+                                    <span id="im-message-time" ><?php echo $date ?></span> <!-- style="float:left;margin-left:2px;" -->
+                                    <span id="im-message-actions" > <!-- style="float:right;margin-right:0px;"-->
+                                         <?php if($optionSelected==0 && $message->received != 0){ echo "<a href='#' class='im-action-icon' onclick='performAction(0,$message->message_id,0);'><img id='im-unread-icon' src='".IMAGES_BACKEND."unread (15 x 15).png' title='mark as unread' alt='mark as unread'/></a>"; } ?>
+                                         <?php if(($optionSelected==0&& $user_type != 1) || ($optionSelected==2 && ($user_type != 1 && $message->user_id != $user->user_id))){ echo "<a href='#' class='im-action-icon' onclick='performAction(1,$message->message_id,$message->reported);'><img id='im-report-icon' src='".IMAGES_BACKEND. "report (15 x 15).png' title='report' alt='report' /></a>"; } ?>
+                                        <?php  echo "<a href='#' class='im-action-icon' onclick='performAction(2,$message->message_id,$message->reported,0);'><img id='im-delete-icon' src='".IMAGES_BACKEND. "del  (15 x 15).png' title='delete' alt='delete' /></a>";  ?>
+                                    </span>
+    
+                            </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </label>
+    <?php }} ?>
+</div>
+</div>
+<!-- BODY --->
+
+<script>
+//This function displays message box when the user clicks on new message button
+$(document).ready(function(){
+    $("#inline").fancybox({
+        'overlayColor'    : '#000',  
+        'overlayOpacity'  : 0.7, 
+        'background'      : '#000',
+        'scrolling'       : 'no',
+        onClosed: function(){
+            $('#inline').hide(250, function() {
+                $("#error-message").hide();
+                $('#message-texts-send').css("border","1px solid #cccccc");
+                $('#message-texts-send').val('Enter username or email address..');
+                $('#message-content').css("border","1px solid #cccccc");
+                $('#message-content').val('');
+                $('#im-name-autosuggest').hide();
+            });
+        }
+    });
+
+    $("#btn-message").click(function(){
+        $("#inline").trigger('click');
+        $("#message-texts-send").focus();
+    });
+});          
+
+//This function is acts as a searchbox, it searches value the user when the user types the keyboard and displays the message
+//[user_search = user input]
+$('#im-content-search-textbox').keyup(function() {
+    user_search = $('#im-content-search-textbox').val();
+    if(user_search.length>0){
+        $("#im-content-messages label").not(':contains(\''+user_search+'\')').css("display", "none");
+    }else{
+        $("#im-content-messages label").css("display","block");
+    }
+   
+});
+
+      
+
+</script>
+

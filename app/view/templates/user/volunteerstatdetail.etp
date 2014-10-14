@@ -1,0 +1,15 @@
+<div style="text-align:center">
+<h2>Volunteer Statistic Detail</h2>
+<a href="index.php?c=user&a=volunteerstat&month=<?php echo $month.'&year='.$year;?>">Volunteer Statistic</a>
+</div>
+<table class="data">
+<tr><th>No.</th><th>Date</th><th>Event</th><th>Volunteer</th></tr>
+<?php
+$num = 1;
+foreach($data as $k=>$v){
+	echo '<tr '.($num % 2 == 0?'class="odd"':'').'><td>'.$num.'</td><td>'.$v['date'].'</td><td>'.$v['description'].'</td><td>'.$v['first_name'].' '.$v['last_name'].'</td></tr>';
+	$num++;
+}
+if(empty($data))echo '<tr><td colspan="3">There\'s no data</td></tr>';
+?>
+</table>

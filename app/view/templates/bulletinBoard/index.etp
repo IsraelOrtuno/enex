@@ -1,0 +1,46 @@
+<div id="bulletin">
+    <div id="breadcrumb">
+        Home > <a href="#">Bulletin board</a>
+    </div>
+    <h1>Bulletin board - Topics list</h1>
+    <?php if ($user->user_type_id == 1) { ?>
+    <div class="admin_actions">
+        <a href="index.php?c=bulletinBoard&a=manageForbiddenWords">Manage forbidden words</a>
+    </div>
+    <?php }
+    if (isset($error)) {
+    ?>
+    <div class="error">
+        <?php echo $error; ?>
+    </div>
+    <?php
+    }
+    ?>
+    <div class="form">
+        <form action="index.php?c=bulletinBoard&a=createTopic" method="POST">
+            <label for="title">Title</label>
+            <input type="text" name="title" value="<?php echo isset($title)?$title:''; ?>" />
+            <label for="message">Message</label>
+            <textarea name="message" rows="4"><?php echo isset($message)?$message:''; ?></textarea>
+            <input type="submit" value="Create topic" />
+        </form>
+    </div>
+    <?php foreach ($topics as $topic) { ?>
+    <div class="topic">
+        <h2><a href="index.php?c=bulletinBoard&a=showTopic&topic_id=<?php echo $topic->topic_id; ?>"><?php echo $topic->title; ?></a></h2>
+        <?php
+        if ($topic->user_id == $user->user_id || ($actions == 'some' && $topic->user_type_id == 3) || ($actions == 'all' && ($topic->user_type_id == 2 || $topic->user_type_id == 3))) {
+        ?>
+            <div class="topic_actions">
+                <a class="delete_button" href="index.php?c=bulletinBoard&a=deleteTopic&topic_id=<?php echo $topic->topic_id; ?>">Delete</a>
+                <a class="modify_button" href="index.php?c=bulletinBoard&a=modifyTopic&topic_id=<?php echo $topic->topic_id; ?>">Modify</a>
+            </div>
+        <?php
+        }   // if
+        ?>
+        <h3><?php echo date('Y-m-d H:i:s', strtotime($topic->creation_date)); ?></h3>
+        <p><?php echo nl2br($topic->message); ?></p>
+    </div>
+    <?php } // foreach ?>
+    
+</div>

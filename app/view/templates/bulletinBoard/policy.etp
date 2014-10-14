@@ -1,0 +1,39 @@
+<div class="search-bar">
+    <div id="policy-header">
+        <div id="header-left">
+            <img src="<?php echo IMAGES_BACKEND . 'policy.png'; ?>" /><h2>Policy</h2>
+        </div>
+        <div id="header-right">
+            <a href="index.php?c=bulletinBoard&a=index">< Back to Home</a>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="policy-container">
+<p>Please read the following policy to understand how your personal information will be treated. This policy may change from time to time so please check back periodically.</p>
+    <ol>
+        <li><strong>What personal information does Simple Heart collect?</strong></li>
+            <p>Information is collected for the Simple Heart regarding supporters, service users and visitors to our website: information regarding what pages is accessed and when, information volunteered by you (such as survey information), contact details and your preferred means of communication.</p>
+        <li><strong>How does Simple heart use my information?</strong></li>
+            <p>Simple Heart uses the information we collect about you to help us with understanding more about how our site is used and to be able to send you communications that you have requested as well as those which may be of interest to you, either electronically or otherwise.</p>
+        <li><strong>Who is collecting your information?</strong></li>
+            <p>When you are in the website Simple heart and are asked for personal information, you are sharing that information with Simple Heart alone unless stated otherwise. For example, when you are using our secure online donation pages, you are going through to a partner company, World Pay plc and it is clear on the donation page when you are going through to the World Pay site. Where information is not collected directly from the Simple Heart website, but is entered via a third party, the information is not used in any way or for any purpose other than to process the transaction or to pass the information on to the Simple Heart, unless otherwise stated.</p>
+        <li><strong>With whom does Simple Heart share your information?</strong></li>
+            <p>As a general rule, Simple Heart will not disclose any of your personally identifiable information, except when we have your permission or under special circumstances, such as when we believe in good faith that the law requires it. When you are using our secure online donation pages you are going through to a partner company and the information you give such as your credit card number and contact information is provided to them so that the transaction can take place. Where information is collected via a third party, this data is only used by the Simple Heart unless otherwise stated.</p>
+            <p>Simple Heart may make individual identifying information available to affiliated third parties, including Simple Heart Ventures Ltd our trading subsidiary and our agents for marketing purposes. Simple Heart also uses such information to contact you for marketing purposes. Simple Heart does not sell on lists to others. From time to time, we agree with other likeminded organisations to write to some of each other's supporters for the mutual benefit of both.</p>
+        <li><strong>What are my choices regarding collection, use and distribution of my information?</strong></li>
+            <p>If you indicated that you are interested in receiving regular information about Simple Heart's work we will send you communications regarding Simple Heart's work and activities, either electronically or otherwise. In addition, we may send you direct mail that we feel may be of interest to you.
+    Simple Heart does not sell or rent user information to anyone. From time to time, we agree with other likeminded organisations to write to some of each other's supporters, for the mutual benefit of both.</p>
+        <li><strong>What is Simple Heart's policy on allowing me to update, correct or delete my personally identifiable information?</strong></li>
+            <p>The accuracy of your individual identifying information is important to Simple Heart. If you change email address or any of the other information we hold is inaccurate or out of date, please email us at internet@simpleheart.org.uk or write to Supporter Care, 8, Northumberland Street, WC2N 8, Westminster, London.</p>
+        <li><strong>How does Simple Heart protect my personal identifiable information?</strong></li>
+            <p>Simple Heart is committed to taking reasonable steps to protect the individual identifying information that you provide to us.</p>
+        <li><strong>What security precautions are in place to protect the loss, misuse or alteration of my information?</strong></li>
+            <p>Unfortunately, no data transmission over the Internet can be guaranteed to be 100% secure. As a result, while we strive to protect your personal information, Simple Heart cannot ensure or warrant the security of any information you transmit to us, and you do so at your own risk. Once we receive your transmission, we make our best effort to ensure its security on our systems.</p>
+        <li><strong>Users under 18?</strong></li>
+            <p>If you use this site for information about fundraising campaigning or supporting the work of Simple Heart, please let an adult know.</p>
+    </ol>
+    <div id="policy-footer">
+        <div class="footer-tag">Simple Heart &copy; 2011</div>
+    </div>
+</div>

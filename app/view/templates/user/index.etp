@@ -1,0 +1,51 @@
+<script language="javascript" src="<?php echo JS.'jconfirmaction.jquery.js';?>"></script>
+<script language="javascript">
+$(function(){
+	$('a.delete').jConfirmAction();
+	$('#dialogmenudiv').dialog({
+		autoOpen: false,
+		show: "blind",
+		hide: "explode",
+		width:400
+	});
+});
+
+function showDetail(id){
+	var data = ($('#userdatadiv'+id).html()).split('###');
+	var userdata='<table>';
+	userdata+='<tr><td>Name</td><td>:</td><td>'+data[0]+' '+data[1]+'</td></tr>';
+	userdata+='<tr><td>Email</td><td>:</td><td>'+data[3]+'</td></tr>';
+	userdata+='<tr><td>Address</td><td>:</td><td>'+data[2]+'</td></tr>';
+	userdata+='<tr><td>Post Code</td><td>:</td><td>'+data[4]+'</td></tr>';
+	userdata+='<tr><td>Phone</td><td>:</td><td>'+data[5]+'</td></tr>';
+	userdata+='<tr><td>Date of Birth</td><td>:</td><td>'+data[7]+'</td></tr>';
+	userdata+='<tr><td>Gender</td><td>:</td><td>'+(data[6]==1?'Female':'Male')+'</td></tr>';
+	userdata+='<tr><td>User Type</td><td>:</td><td>'+data[10]+'</td></tr>';
+	userdata+='<tr><td>Status</td><td>:</td><td>'+(data[8]==1?'Active':'Not Active')+'</td></tr>';
+	userdata+='<tr><td>Avatar</td><td>:</td><td>'+data[9]+'</td></tr>';
+	userdata+='</table>';
+	$('#dialogmenudivdata').html(userdata);
+	$('#dialogmenudiv').dialog({title: 'User Detail'}).dialog('open');
+}
+</script>
+<div style="text-align:center">
+<h2>User Management</h2>
+<a href="index.php?c=user&a=add">Register</a>
+</div>
+<h3>User List</h3>
+<?php
+if(!empty($errormsg))echo '<p class="error">'.$errormsg.'</p>';
+if(!empty($successmsg))echo '<p class="success">'.$successmsg.'</p>';
+?>
+<table class="data">
+<tr><th>No.</th><th>Name</th><th>Email</th><th>User Type</th><th>Type</th></tr>
+<?php
+$num = $page+1;
+foreach($data as $k=>$v){
+	echo '<tr '.($num % 2 == 0?'class="odd"':'').'><td>'.$num.'</td><td>'.$v['first_name'].' '.$v['last_name'].'</td><td>'.$v['email'].'</td><td>'.$v['type'].'</td><td><a href="index.php?c=user&a=edit&id='.$v['user_id'].'" class="icon edit" title="Edit User">&nbsp;</a> <a href="index.php?c=user&a=delete&id='.$v['user_id'].'" title="Delete User" class="icon delete">&nbsp;</a> <a href="javascript:showDetail('.$v['user_id'].');" class="icon detail" title="Detail User">&nbsp;</a><div id="userdatadiv'.$v['user_id'].'" style="display:none">'.$v['first_name'].'###'.$v['last_name'].'###'.$v['address'].'###'.$v['email'].'###'.$v['post_code'].'###'.$v['phone_no'].'###'.$v['gender'].'###'.$v['dob'].'###'.$v['deleted'].'###'.$v['avatar'].'###'.$v['type'].'</div></td></tr>';
+	$num++;
+}
+?>
+</table>
+
+<div id="dialogmenudiv" style="display:none;"><div id="dialogmenudivdata"></div></div>

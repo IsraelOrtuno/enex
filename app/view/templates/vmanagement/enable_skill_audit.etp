@@ -1,0 +1,56 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'camera-35x25.png' ?>" width="35px" height="26px" /><h2>Volunteering Management</h2>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=vmanagement&a=index">Volunteering Management</a> > Enable skill audit
+    </div>
+</div>
+    <!-- Create Album Form -->
+    <div style="display: none;">
+        <div id="createAlbum" style="width:480px;height:auto;overflow:auto;">
+            <form id="create-album" name="createAlbum" method="post">
+                <h2>Create Album</h2>
+                <hr size="1px" color="#cccccc" />
+                Please enter album name to create a photo album.
+                <div id="album-name"><strong>Album Name : <input type="text" name="albumname" size="50" required="required" /></strong></div>
+                <div id="btn-bar"><input type="submit" id="create-btn" value="Create" /></div>
+            </form>
+        </div>
+    </div>
+<h1>Volunteer Skill</h1>
+<table border="0">
+    <thead>
+        <tr>
+            <th>Skill ID</th>
+            <th>Skill Name</th>
+            <th>Level (scale of 1-10)</th>
+            <th>User</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($skills as $skill) {
+        ?>
+        <tr>
+            <td><?php echo $skill->skill_type_id; ?></td>
+            <td><?php echo $skill->skill_type_name; ?></td>
+            <td><?php echo $skill->level; ?></td>
+            <td><?php echo $skill->first_name.' '.$skill->last_name; ?></td>
+            <td>
+                <a href="index.php?c=vmanagement&a=modify_enable_skill_audit&skill_type_id=<?php echo $skill->skill_type_id; ?>">edit</a>
+                <a href="index.php?c=vmanagement&a=delete_enable_skill_audit&skill_type_id=<?php echo $skill->skill_type_id; ?>">delete</a>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+<br/><br/>
+<div id="back-btn">
+           <a href="index.php?c=vmanagement&a=index">Back to events list</a> <a href="index.php?c=vmanagement&a=add_skill">Create new skill</a>
+</div>
+      

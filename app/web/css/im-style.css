@@ -1,0 +1,455 @@
+/* 
+    Document   : im-style
+    Created on : Dec 12, 2011, 2:49:42 AM
+    Author     : Segun
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+/** IM MESSAGE STYLE**/
+
+#im-content-header{
+    margin: 0px 10px 0px 10px;
+}
+
+#im-content-header hr {
+    width:100%;
+    margin:10px auto 10px auto;
+    color:#e5e5e5;
+    size:1px;
+    float:left;
+    opacity:0.5;
+    filter:alpha(opacity=50); /* For IE8 and earlier */
+}
+
+#left-im-header{
+    float:left;
+    width:250px;    
+}
+
+#left-im-header label{
+    position:absolute;
+    line-height:2.5;
+    font-size:20px;
+    font-weight:bold;
+    margin:2px 7px 0px 7px;
+    color:#666666;
+    font-family:  century gothic;
+}
+
+#left-im-header img{
+    margin-top:10px;
+    margin-left:4px;
+}
+
+#right-im-header{
+    float:right;
+    width: 300px;
+    margin:10px auto 10px auto;
+}
+
+#right-im-header #btn-action{
+    margin-left:10px;
+    width:120px;
+}
+
+#action-container{
+    display:block;
+    float:right;
+}
+#action-menu{
+    width:150px;
+    position:absolute;
+    margin-left:10px;
+    background:#333333;
+    z-index:100;
+    text-align:center;
+    border:1px solid #ff2929;
+    display:none;
+    opacity:0.9;
+    filter:alpha(opacity=90); /* For IE8 and earlier */
+}
+
+#action-menu a{
+    text-decoration:none;
+    line-height:2;
+    display:block;
+    color:#ffffff;
+}
+
+#action-menu a:hover{
+    display:block;
+    background:#ff2929;
+}
+
+#action-menu hr{
+    width:100%;
+    margin:0px auto 0px auto;
+    color:#e5e5e5;
+    size:1px;
+    float:left;
+    opacity:0.5;
+    filter:alpha(opacity=50); /* For IE8 and earlier */
+}
+
+#im-header-function{
+    margin:0px 10px 0px 10px;
+    clear:both;
+}
+
+/* IM Search Bar */
+#im-content-search-container{
+    border: 1px solid #cccccc;
+    height:23px;
+    width:260px;
+    margin-top:10px;
+    margin-bottom:10px;
+    position:absolute;
+}
+
+#im-content-search-container img{
+    float:right;
+    margin:2px auto;
+    padding-right:3px;
+    padding-left:3px;
+    border-left: 1px outset #cccccc;
+    cursor:pointer;
+}
+
+#im-content-search-textbox{
+    font-family: Century Gothic;
+    height:20px;
+    width: 225px;
+    color: #cccccc;
+    font-style:italic;
+    border:none;
+    margin-left:5px;
+    position:absolute;
+}
+
+#im-panel{
+    margin-top:12px;
+    margin-bottom:10px;
+    float:right;
+}
+
+#im-panel span{
+    margin-right:7px;
+}
+
+#im-panel span label{
+    font-size:12px;
+}
+
+#im-panel span label:hover{
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+/*--  MESSAGES -- */
+
+#im-content-messages{
+    clear:both;
+    margin:0px 5px 0px 10px;
+    
+}
+
+#im-message-content{
+    height:70px;
+    border-bottom:1px dashed #cccccc;
+    
+}
+
+#im-message-content #im-action-checkbox{
+    float:left;
+    width:5%;
+    text-align:center;
+    margin-top:23px;
+}
+
+#im-message-content #im-content-details{
+    width:95%;
+    float:right;
+    
+}
+
+#im-content-details #im-user-img{
+    float:left;
+    margin: 9px 5px 7px 5px;
+}
+
+#im-user-img img{
+    border:none;
+}
+
+#im-content-details a{
+    text-decoration:none;
+    color:#000000;
+}
+
+#im-content-details #im-message-container{
+    float:right;
+    width:470px;
+    height:100%;
+    color:#666666;
+    
+}
+
+#im-message-details{
+    margin-top: 5px;
+    float:left;
+    width:350px;
+    height:100%;
+}
+
+#im-message-details p{
+    margin-top:10px;
+    margin-left:5px;	
+    margin-bottom:5px;
+}
+
+#im-message-details #im-message{
+    margin-left:5px;
+    width:300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#im-message-function{
+    clear:both;
+    float:right;
+    width:130px;
+    margin-top: -30px;
+    margin-right: 10px;
+    
+    
+}
+
+#im-message-time{
+    float:left;
+    margin-top: -1px;
+    
+}
+
+#im-message-actions{
+    
+    float:right;
+    width:52px;
+    text-align:right;
+    margin-right: 20px;
+}
+
+.im-action-icon{
+    text-decoration: none;
+}
+
+.im-action-icon img{
+    margin-left:5px;
+    width:10px;
+    height:10px;
+    border:none;
+    cursor:hand;
+}
+
+/*SUCCESS MESSGAE*/
+
+#success-msg{
+    color:black;
+    background-color:#EBF8A4;
+    width:auto;
+    height:25px;
+    line-height:2;
+    margin-top:0px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:1px solid #A2D246;
+}
+
+#success-msg div{
+    margin-left:5px;
+}
+
+#success-msg div img{
+    margin-top:5px;
+}
+#success-msg div label{
+    vertical-align:top;
+    margin-left: 4px;
+}
+
+/*VIEW MESSAGE*/
+
+#view-im-header{
+    margin:5px 7px 0px 7px;
+    width:570px;
+    height:60px;
+    background:#cccccc;
+}
+
+#view-im-image{
+    float:left;
+}
+
+#view-im-image img{
+    margin:5px 5px 5px 5px;
+    border:none;
+}
+
+#view-im-details{
+    float:right;
+    width:510px;
+    height:60px;
+}
+
+#view-im-from{
+    height:20px;
+    margin-top:10px;
+    margin-bottom:5px;
+    float:left;
+}
+
+#view-im-from span{
+    margin-right:5px;
+    margin-left:5px;
+}
+
+#view-im-timedetails{
+    height:20px;
+    float:right;
+    margin-top:10px;
+    margin-bottom:5px;
+    margin-right:5px;
+}
+
+#view-im-to{
+    clear:both;
+    margin-left:5px;
+}
+
+#view-im-to #view-to{
+float:left;
+}
+
+#view-im-to #view-im-action{
+    float:right;
+}
+
+#view-im-action img{
+    margin-right:5px;
+    cursor:pointer;
+    border:none;
+}
+
+
+#view-im-message{
+    background:#f2f2f2;
+    opacity:0.4;
+    filter:alpha(opacity=50); /* For IE8 and earlier */
+    height:auto;
+    margin:0px 3px 0px 7px;
+    word-wrap:break-word;
+    overflow: hidden;
+    border:1px solid #cccccc;
+}
+
+#view-im-message p{
+    margin-right:8px;
+    margin-left:10px;
+    margin-top:2px;
+    margin-bottom:5px;
+}
+
+.im-view-action-icon{
+    text-decoration: none;
+}
+
+.im-view-action-icon img{
+    margin-left:5px;
+    border:none;
+}
+
+/** TO USER SUGGEST **/
+
+#im-to-user-details{
+    height:42px;
+    width:auto;
+    background:#ffffff;
+}
+
+#im-to-user-details:hover{
+    height:42px;
+    background:#cccccc;
+    width:auto;
+    cursor:pointer;
+}
+
+#im-to-user-details #im-to-img{
+    float:left;
+    margin:4px 5px 2px 5px;
+}
+
+
+#im-to-user-details #im-to-user-suggest{
+    float:right;
+    text-align: left;
+    width:299px;
+    margin:4px auto;
+}
+
+/**BUTTON STYLE**/
+
+.im-button-style{
+    font-family: century gothic;
+    font-size:14px;
+    text-decoration:none;
+    padding-top:3px;
+    padding-right:10px;
+    padding-bottom:3px;
+    padding-left:10px;
+    background-color:#808080;
+    color:#fff;
+    border:1px solid #ccc;
+}
+.im-button-style:hover{
+    font-size:14px;
+    text-decoration:none;
+    padding-top:3px;
+    padding-right:10px;
+    padding-bottom:3px;
+    padding-left:10px;
+    background-color:#ff2929;
+    color:#fff;
+}
+.im-button-style:disabled{
+    font-size:14px;
+    text-decoration:none;
+    padding-top:3px;
+    padding-right:10px;
+    padding-bottom:3px;
+    padding-left:10px;
+    background-color:#e4e4e4;
+    color:#fff;
+}
+.form-button{
+    font-family:Century Gothic;
+    text-decoration:none;
+    padding-top:3px;
+    padding-right:15px;
+    padding-bottom:3px;
+    padding-left:15px;
+    background-color:#666;
+    color:#fff;
+    border:1px solid #e5e5e5;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+}
+.form-button:hover{
+    background-color:#ff2929;
+    color:#fff;
+}

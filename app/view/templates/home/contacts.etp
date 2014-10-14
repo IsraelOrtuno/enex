@@ -1,0 +1,36 @@
+<div class="i-box">
+    <div class="i-padding">
+        <div class="i-slider">
+            <div class="i-frame">
+                <iframe width="450" height="203" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Northumberland+Street+WC2+N8&amp;sll=51.507554,-0.125957&amp;sspn=0.008214,0.01929&amp;vpsrc=6&amp;gl=uk&amp;g=Northumberland+Street+WC2+N8&amp;ie=UTF8&amp;hq=&amp;hnear=Northumberland+St,+London+WC2N+5DB,+United+Kingdom&amp;t=m&amp;ll=51.507674,-0.125141&amp;spn=0.010684,0.034332&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
+                <br />
+                <iframe width="200" height="203" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Grainger+Street+NE1+9JG&amp;aq=&amp;sll=51.50742,-0.126203&amp;sspn=0.004107,0.009645&amp;vpsrc=6&amp;gl=uk&amp;ie=UTF8&amp;hq=&amp;hnear=Grainger+St,+Newcastle+Upon+Tyne+NE1,+United+Kingdom&amp;t=m&amp;ll=54.971407,-1.615076&amp;spn=0.00739,0.01708&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <iframe width="200" height="203" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=LS1+5PS&amp;aq=&amp;sll=53.799371,-1.548386&amp;sspn=0.007794,0.01929&amp;vpsrc=6&amp;gl=uk&amp;ie=UTF8&amp;hq=&amp;hnear=LS1+5PS,+United+Kingdom&amp;t=m&amp;ll=53.79913,-1.548901&amp;spn=0.007604,0.017252&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+            </div>
+                  
+            <div class="contact-left">
+                <div id="add1">
+                    <strong style="font-size:25px;color:#ff2929;">Head Office:</strong><br />
+                    <strong>London Branch</strong><br />
+                    8 Northumberland Street<br />
+                    WC2 N8<br />
+                    Westminster<br />
+                    London.<br />
+                </div>
+                <div id="add2">
+                    <strong style="font-size:25px;color:#ff2929;">Branch office:</strong><br />
+                    <strong>Newcastle Branch</strong><br />
+                    26 Grainger Street<br />
+                    NE1 9JG<br />
+                    Newcastle upon Tyne<br /><br />
+
+                    <strong>Leeds Branch</strong><br />
+                    12 Greek Street<br />
+                    LS1 5PS<br />
+                    Leeds.<br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

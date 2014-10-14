@@ -1,0 +1,57 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'event.png'; ?>" width="35px" height="26px" /><h2>Volunteering Management</h2>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=vmanagement&a=index">Volunteering Management</a> > modify event
+    </div>
+</div>
+<?php if (isset($event_modified)) { ?>
+<div>Event modified successfully</div>
+<br/>
+<?php } else { 
+foreach ($event as $event) { ?>
+<table>
+    <form name="modify_event" action="#" method="POST">
+        <input type="hidden" name="event_id" value="<?php echo $event->event_id; ?>" />
+        <tr>
+            <td><label for="event_name">Event name:</label></td>
+            <td><input type="text" name="event_name" value="<?php echo $event->event_name; ?>" /></td>
+        </tr>
+        <tr>
+            <td><label for="date">Event date:</label></td>
+            <td><input type="text" name="date" value="<?php echo $event->date; ?>" /></td>
+        </tr>
+        <tr>
+            <td valign="top"><label for="description">Event description:</label></td>
+            <td><textarea name="description" rows="6" cols="30"><?php echo $event->description; ?></textarea></td>
+        </tr>
+        <tr>
+            <td><label for="capacity">Event capacity:</label></td>
+            <td><input type="text" name="capacity" value="<?php echo $event->capacity; ?>" /></td>
+        </tr>
+        <tr>
+            <td><label for="skills_required_id">Skills Required:</label></td>
+            <td><input type="text" name="skills_required_id" value="<?php echo $event->skills_required_id; ?>" /></td>
+        </tr>
+        <tr>
+            <td><label for="event_type_id">Event Type:</label></td>
+            <td><input type="text" name="event_type_id" value="<?php echo $event->event_type_id; ?>" /></td>
+        </tr>
+        <tr>
+            <td><label for="user_id">Users:</label></td>
+            <td><input type="text" name="user_id" value="<?php echo $event->user_id; ?>" /></td>
+        </tr>
+        <tr><td></td>
+        <td align="right"><input type="reset" value="Clear all" />
+            <input type="submit" value="Save" name="save" /></td>
+        </tr>
+    </form>
+</table>
+<?php } } ?>
+<div id="back-btn">
+     <a href="index.php?c=vmanagement&a=index">Back to events list</a> 
+</div>

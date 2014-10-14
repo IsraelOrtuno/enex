@@ -1,0 +1,6 @@
+<div>Event deleted</div>
+<br/>
+<div id="back-btn">
+    <a href="index.php?c=vmanagement&a=index">Back to events list</a>
+</div>
+        

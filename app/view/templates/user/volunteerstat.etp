@@ -1,0 +1,34 @@
+<div style="text-align:center">
+<h2>Volunteer Statistik</h2>
+</div>
+<form action="index.php?c=user&a=volunteerstat" method="post">
+<select name="month">
+<option value="01" <?php if($month=='01') echo 'selected';?>>January</option>
+<option value="02" <?php if($month=='02') echo 'selected';?>>February</option>
+<option value="03" <?php if($month=='03') echo 'selected';?>>March</option>
+<option value="04" <?php if($month=='04') echo 'selected';?>>April</option>
+<option value="05" <?php if($month=='05') echo 'selected';?>>May</option>
+<option value="06" <?php if($month=='06') echo 'selected';?>>June</option>
+<option value="07" <?php if($month=='07') echo 'selected';?>>July</option>
+<option value="08" <?php if($month=='08') echo 'selected';?>>August</option>
+<option value="09" <?php if($month=='09') echo 'selected';?>>September</option>
+<option value="10" <?php if($month=='10') echo 'selected';?>>October</option>
+<option value="11" <?php if($month=='11') echo 'selected';?>>November</option>
+<option value="12" <?php if($month=='12') echo 'selected';?>>December</option>
+</select>
+<select name="year">
+<?php for($i=date('Y');$i>=date('Y')-4;$i--)echo '<option value="'.$i.'" '.($year==date('y')?'selected':'').'>'.$i.'</option>';?>
+</select>
+<input type="submit" value="Go" />
+</form>
+<table class="data">
+<tr><th>No.</th><th>Hits</th><th>Volunteer</th><th>Detail</th></tr>
+<?php
+$num = 1;
+foreach($data as $k=>$v){
+	echo '<tr '.($num % 2 == 0?'class="odd"':'').'><td>'.$num.'</td><td>'.$v['cnt'].'</td><td>'.$v['first_name'].' '.$v['last_name'].'</td><td><a href="index.php?c=user&a=volunteerstatdetail&id='.$v['user_id'].'&month='.$month.'&year='.$year.'">Detail</a></td></tr>';
+	$num++;
+}
+if(empty($data))echo '<tr><td colspan="3">There\'s no data</td></tr>';
+?>
+</table>

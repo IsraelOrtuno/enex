@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $title; ?></title>
+<link rel="stylesheet" type="text/css" href="<?php echo JS_FANCYBOX . 'jquery.fancybox-1.3.4.css' ?>" />
+<?php echo $cssFiles; ?>
+<?php echo $jsFiles; ?>
+</head>
+<body onload="loadUsers('<?php echo IMAGES_BACKEND ?>');self.focus();">
+<!-- HEADER -->
+<div class="header">
+    <!-- Logout Button -->
+    <div class="header-container">
+        <div class="dropdown">
+            Options<a href="#" class="dropdown-btn"></a>
+            <div id="dropdown-container" style="display:none;">
+                <a id="my-account" href="#">My Account</a>
+                <a href="index.php?c=bulletinBoard&a=policy">Policy</a>
+                <a href="index.php?c=login&a=logout" style="border-top:1px #666666 solid;">Logout</a>
+            </div>
+        </div>
+    </div>
+    <!-- End Logout Button -->
+</div>
+<!-- HEADER END -->
+
+<!-- ALL CONTENT START HERE -->
+<div class="be-wrapper">
+    <!-- LEFT SIDEBAR HERE -->
+    <div class="left-sidebar">
+    <!-- User's Avatar and Name -->
+    <div class="avatar">
+        <img src="<?php echo IMAGES_BACKEND.$user->avatar; ?>" width="64px" height="64px" />
+        <strong><?php echo $user->first_name.' '.$user->last_name; ?></strong>
+    </div>
+    <!-- End User's Avatar and Name -->
+
+    <!-- Left Sidebar - Main Navigation -->
+    <div class="left-nav">
+        <a href="index.php?c=bulletinBoard" id="main-nav-btn">
+            <img src="<?php echo IMAGES_BACKEND . 'home.png'; ?>" width="24px" height="24px" /><strong>Home</strong>
+        </a>
+        <br />
+        <a href="index.php?c=im" id="main-nav-btn">
+            <img src="<?php echo IMAGES_BACKEND . 'mail.png'; ?>" width="24px" height="24px" /><strong>Messages</strong>
+        </a>
+        <br />
+        <a href="index.php?c=gallery" id="main-nav-btn">
+            <img src="<?php echo IMAGES_BACKEND . 'camera.png'; ?>" width="24px" height="24px" /><strong>Picture Gallery</strong>
+        </a>
+    </div>
+    <!-- End Left Sideber - Main Navigation -->
+    
+    <!-- Left Sidebar - Sub Navigation 1 -->
+    <?php if ($user->user_type_id == 1) { ?>
+    <div class="left-widget-1">
+        <div class="left-wid-1-container">
+            <div id="left-wid-1-title">Administration Tools</div>
+            <div id="left-wid-1-btn-container">
+                <a href="index.php?c=user" class="left-wid-1-btn">
+                    <img src="<?php echo IMAGES_BACKEND . 'play.png'; ?>" width="15px" height="15px" />
+                    <span>User Management</span>
+                </a>
+                <a href="index.php?c=user&a=sitestat" class="left-wid-1-btn">
+                    <img src="<?php echo IMAGES_BACKEND . 'play.png'; ?>" width="15px" height="15px" />
+                    <span>Site Usage Statistics</span>
+                </a>
+                <a href="index.php?c=user&a=volunteerstat" class="left-wid-1-btn">
+                    <img src="<?php echo IMAGES_BACKEND . 'play.png'; ?>" width="15px" height="15px" />
+                    <span>Volunteering Statistics</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+    <!-- End Left Sidebar - Main Navigation -->
+        <?php if (($user->user_type_id == 1) || ($user->user_type_id == 2)) { ?>
+        <!-- Left Sidebar - Sub Navigation 2 -->
+        <div class="left-widget-2">
+        	<div class="left-wid-2-container">
+            	<div id="left-wid-2-title">Volunteering Management</div>
+                <div id="left-wid-2-btn-container">
+                	<a href="index.php?c=vmanagement&a=enable_skill_audit" class="left-wid-2-btn">
+                    	<img src="<?php echo IMAGES_BACKEND . 'play.png'; ?>" width="15px" height="15px" />
+                        <span>Skills Audit</span>
+                	</a>
+                	<a href="index.php?c=vmanagement" class="left-wid-2-btn">
+                    	<img src="<?php echo IMAGES_BACKEND . 'play.png'; ?>" width="15px" height="15px" />
+                        <span>Events Management</span>
+                	</a>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+    <!-- END LEFT SIDEBAR -->
+    <div class="container">
+        <?php echo $content; ?>
+    </div>
+    <!-- RIGHT SIDEBAR -->
+    <div class="right-sidebar">
+    	<!-- Calendar -->
+    	<div class="calendar">
+            <h5><?php echo date('M'); ?></h5>
+            <h2><?php echo date('d'); ?></h2>
+        </div>
+        <!-- End Calender -->
+        
+                <!-- Right Sidebar - Events Widget -->
+        <div class="event-widget">
+            <div class="event-container">
+            	<div class="event-title">
+                    <img src="<?php echo IMAGES_BACKEND . 'event.png'; ?>" width="25px" height="25px" />
+                    <strong>Events</strong>
+                </div>
+                
+                <div id="event-btn-container">
+                    <?php foreach ($events as $event) { ?>
+                    <a href="index.php?c=vmanagement&a=event_details&event_id=<?php echo $event->event_id; ?>" class="event-btn">
+                        <img src="<?php echo IMAGES_BACKEND . 'plus.png'; ?>" width="15px" height="15px" />
+                        <strong><?php echo $event->event_name; ?></strong><p><?php echo $event->date; ?></p>
+                    </a>
+                    <?php } ?>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- End Right Sidebar - Events Widget -->
+        
+         <!--- Right Sidebar - Instant Messagers --->
+        <div class="im-widget">
+            <div id="im-container" class="im-container">
+            	<div class="im-title">
+        			<img src="<?php echo IMAGES_BACKEND. 'im.png' ?>" width="25px" height="21px" />
+                	<strong>Instant Messaging</strong>
+                </div>
+				<div id="im-search-container">
+                                        <form>
+                                            <input id="im-textbox" name="search" type="text" value="Search......" maxlength="30" onFocus="clearSearchField(this.id,'im-search-container')" onBlur="setSearchField(this.id,'im-search-container')" onkeyup="showUser(this.value,'<?php echo IMAGES_BACKEND ?>',0);"/>
+                                            <img src="<?php echo IMAGES_BACKEND. 'search.jpg' ?>" width="20"  height="20" title="search" alt="Search" />
+                                        </form>
+                                </div>
+                
+                <div id="im-new-container" > 
+                    
+                </div>
+                
+               
+                <a id="inline" href="#new-message-container" style="display:none;"></a>
+
+                <div style="display:none">
+                    <div id="new-message-container">
+                        <div id="new-message-header">New Message</div>
+                         <form id="newMessage" name="newMessage" method="post" action="" >
+                            <div id="new-message-content">
+                                <div id="error-message" style="display:none;"><div><img src='<?php echo IMAGES_BACKEND. 'error.png' ?>' width='15'  height='15' title='error' alt='error' /> <label id="error-text"></label></div></div>
+                                <div class="form-row">
+                                    <span class="label"><strong>To :</strong></span>
+                                    <span class="form-type">
+                                        <input id="message-texts-send" type="text" name="sentTo" autocomplete="off" onclick="this.style.border='1px solid #cccccc';this.value=''" onkeyup="showUser(this.value,'<?php echo IMAGES_BACKEND ?>',1);" value="Enter username or email address.."/>
+                                        <div id="im-name-autosuggest" style="display:none;" >
+                                            
+                                        </div>   
+                                    </span>
+                                </div>
+                                <div class="form-row">
+                                    <span class="label"><strong>Message :</strong></span>
+                                    <span class="form-type">
+                                        <textarea id="message-content" name="messageContent" rows="2" cols="25" onclick="this.style.border='1px solid #cccccc';"></textarea>
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            <div id="new-message-footer">
+                                <input class="form-button" id="btn-sumbit1" type="submit" name="btnSend" value="Send" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--- End Right Sidebar - Instant Messengers --->
+    </div>
+</div>
+<script>
+//This function validates the user address and messages when the user inputs data
+//[sendTo represent the to field on the message box, validation ensure that valued entered is an email address] 
+//[message represents the message field validation ensures that message field is not blank]
+$('#newMessage').submit(function() {
+    var sendTo =  $('#message-texts-send').val();
+    var message =  $('#message-content').val();
+    filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if(sendTo.length<=0){
+        $('#error-text').html("Kindly ensure that address is not blank!!!");
+        $("#error-message").fadeIn(1000, function () {
+        $("#error-message").fadeOut(5000);
+        });
+        $('#message-texts-send').css("border","1px solid red");
+        $('#message-content').css("border","1px solid #cccccc");
+        $('#message-texts-send').focus();
+        return false;
+    }else if(message.length<=0 ){
+        $('#error-text').html("Kindly ensure that message is not blank!!!");
+        $("#error-message").fadeIn(1000, function () {
+        $("#error-message").fadeOut(5000);
+        });
+        $('#message-content').css("border","1px solid red");
+        $('#message-texts-send').css("border","1px solid #cccccc");
+        $('#message-content').focus();
+        return false;
+    }else if(!filter.test(sendTo)){
+        $('#error-text').html("Email address entered is incorrect!!!");
+        $("#error-message").fadeIn(1000, function () {
+        $("#error-message").fadeOut(5000);
+        });
+        $('#message-texts-send').css("border","1px solid red");
+        $('#message-content').css("border","1px solid #cccccc");
+        $('#message-texts-send').focus();
+        return false;
+    }else{
+        var dataString = 'sentTo='+ sendTo + '&messageContent=' + message;
+        $('#message-content').css("border","1px solid #cccccc");
+        $('#message-texts-send').css("border","1px solid #cccccc");
+        $.ajax({
+            type: "POST",
+            url: "./index.php?c=im&a=newMessage",
+            data: dataString,
+            success: function(msg) {
+                if(msg.length>0||msg!=""){
+                    $('#error-text').html(msg);
+                    $("#error-message").fadeIn(1000, function () {
+                    $("#error-message").fadeOut(5000);
+                    });
+                    $('#message-texts-send').css("border","1px solid red");
+                    $('#message-texts-send').focus();
+                    return false;
+                }else{
+                    window.location = './index.php?c=im&a=index&sucessmsg=1'
+                }
+            }
+        });
+        return false;
+    }
+    return false;
+});
+</script>
+</body>
+</html>

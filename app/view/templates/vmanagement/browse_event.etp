@@ -1,0 +1,45 @@
+<h2>Browse event</h2>
+<form> 
+<input type="text" name="event_name" size="50">
+<input type="submit" value="search" />
+</form>
+
+<?php 
+    $event = $_GET['event'];
+    $terms = explode('', $event);
+    echo $terms;
+?>
+<div>
+    <?php echo $search_output; ?>
+</div> 
+/**
+ * SELECT * FROM WHERE MATCH(field1,field2,field3)AGAINST($searchquery)
+ */
+ <?php 
+/**
+ *process the search query
+ */
+ if(isset($_POST['search query']) && $_POST['search query'] !="") {
+ // run code if condition is meets here
+ // filter the search query user output
+ $searchquery = preg_replace('#[^a-z 0-9?!])#i', '', $_POST['searchquery']);
+ if ($_POST['filter1'] == "date") {
+ sqlcommand = SELECT id, event_date AS date FROM event WHERE event_date LIKE '#searchquery#'";
+ }else if ($_POST['filter1'] == "name"){
+ sqlcommand = SELECT id, event_name AS name FROM event WHERE event_name LIKE '#searchquery#'";
+ }else if ($_POST['filter1'] == "event type"{
+ }else if sqlcommand = SELECT id, event_event_type AS name FROM event WHERE event_event_type LIKE '#searchquery#'";{
+ //connect to vmanagement database here
+ include_once ("connect_to_vmanagement.php");
+ $query = mysql_query($sqlcommand)or die(mysql_error());
+ $count =mysql_num_rows($query);
+ if($count > 1){
+ } else {
+ $search_output = "<hr />0 result for <strong>$searchquery</strong><hr />$sqlcommand<hr />";
+ while($row = mysql_fetch_array($query)){
+ $id = $row["id"];
+ $title = $row["description"];
+ $search_output ,= "Item ID: $id - $description<br />";
+ 
+ }
+?>

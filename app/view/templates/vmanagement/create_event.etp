@@ -1,0 +1,74 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'camera-35x25.png' ?>" width="35px" height="26px" /><h2>Volunteering Management</h2>
+        </div>        
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=vmanagement&a=index">Volunteering Management</a> > Create event
+    </div>
+    
+    <?php if (isset($event_created)) { ?>
+    <div>Event created successfully</div>
+    <br/>
+    <?php } else { ?>
+    <table>
+        <form name="new_event" action="#" method="POST">
+            <tr>
+                <td><label for="event_name">Event name:</label></td>
+                <td><input type="text" name="event_name" value="" /></td>
+            </tr>
+            <tr>
+                <td><label for="event_date">Event date:</label></td>
+                <td><input type="text" name="event_date" value="" /></td>
+            </tr>
+            <tr>
+                <td valign="top"><label for="event_description">Event description:</label></td>
+                <td><textarea name="event_description" rows="6" cols="30"></textarea></td>
+            </tr>
+             <tr>
+                <td><label for="event_capacity">Event capacity:</label></td>
+                <td><input type="text" name="event_capacity" value="" /></td>
+            </tr>
+            <tr>
+                <td valign="top"><label for="event_skills_required_id">Skills Required:</label></td>
+                <td>
+                    <select name="event_skills_required_id">
+                        <?php foreach ($skill_list as $skill) { ?>
+                        <option value="<?php echo $skill->skill_type_id; ?>"><?php echo $skill->skill_type_name; ?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="event_type_name">Event type:</label></td>
+                <td>
+                    <select name="event_type_name">
+                        <option value="1">Restricted</option>
+                        <option value="2">Not restricted</option>
+                    </select>
+            </tr>
+            <tr>
+                <td><label for="user_id">User id:</label></td>
+                <td>
+                    <select type="text" name="user_id" />
+                <?php foreach ($user_list as $user) { ?>
+                <option value="<?php echo $user->user_id; ?>"><?php echo $user->first_name; ?></option>
+                <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr><td></td>
+                <td align="right"><input type="reset" value="Clear all" />
+                <input type="submit" value="Save" name="save" /></td>
+            </tr>
+        </form>
+    </table>
+    <br/>
+    <?php } ?>
+    <div id="back-btn">
+     <a href="index.php?c=vmanagement&a=index">Back to events list</a> 
+    </div>
+
+</div>

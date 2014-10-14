@@ -1,0 +1,75 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'event.png'; ?>" width="25px" height="25px" /><h2>Volunteering Management</h2>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > Volunteering Management
+    </div>
+    <!-- Create Album Form -->
+    <div style="display: none;">
+        <div id="createAlbum" style="width:480px;height:auto;overflow:auto;">
+            <form id="create-album" name="createAlbum" method="post">
+                <h2>Create Album</h2>
+                <hr size="1px" color="#cccccc" />
+                Please enter album name to create a photo album.
+                <div id="album-name"><strong>Album Name : <input type="text" name="albumname" size="50" required="required" /></strong></div>
+                <div id="btn-bar"><input type="submit" id="create-btn" value="Create" /></div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php 
+if(isset($_POST['search_query']) && $_POST['search_query'] !=""){
+}
+?>
+<h3>Browse the events Table</h3>
+<form action="index.php?c=vmanagement&a=index" method="POST">
+<input type="text" name="search" size="50">
+<input type="submit" value="search" />
+<select name="filter"> 
+    <option value="date">Date</option>
+    <option value="name">Name</option>
+    <option value="event type">Event type</option>
+</select>
+</form>
+<br/>
+<table>
+    <thead>
+        <tr>
+            <th>Event ID</th>
+            <th>Event Name</th>
+            <th>Event Date</th>
+            <th>action</th>
+            <th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($event_list as $event) {
+        ?>
+        <tr>
+            <td><?php echo $event->event_id; ?></td>
+            <td>
+                <a href="index.php?c=vmanagement&a=event_details&event_id=<?php echo $event->event_id; ?>">
+                    <?php echo $event->event_name; ?>
+                </a>
+            </td>
+            <td><?php echo $event->date; ?></td>
+            <td>
+                <a href="index.php?c=vmanagement&a=modify_event&event_id=<?php echo $event->event_id; ?>">edit</a>
+                <a href="index.php?c=vmanagement&a=delete_event&event_id=<?php echo $event->event_id; ?>">delete</a>
+            </td>
+        </tr>
+        <?php } ?>
+        
+    </tbody>
+</table>
+<br/>
+<br/>
+<div id="back-btn">
+     <a href="index.php?c=vmanagement&a=create_event">Create event</a>   
+</div>
+

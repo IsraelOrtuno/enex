@@ -1,0 +1,47 @@
+<div id="bulletin">
+    <div id="breadcrumb">
+        Home > <a href="index.php?c=bulletinBoard">Bulletin board</a> > <a href="#">Topic</a>
+    </div>
+    <h1><?php echo $topic->title; ?></h1>
+    <?php
+    if (isset($error)) {
+    ?>
+    <div class="error">
+        <?php echo $error; ?>
+    </div>
+    <?php
+    }
+    ?>
+    <p><?php echo $topic->message; ?></p>
+    <div class="user_avatar"><img src="<?php echo IMAGES_BACKEND.$user->avatar; ?>" width="32px" height="32px" /></div>
+    <h4>Created by <?php echo $topic->first_name.' '.$topic->last_name; ?> on <?php echo date('d-m-Y H:i:s', strtotime($topic->creation_date)); echo $topic->modification_date!=null?' (last modification '.date('d-m-Y H:i:s', strtotime($topic->modification_date)).')':''; ?></h4>
+    <?php 
+    if ($messages) {
+        foreach ($messages as $message) {        
+        ?>
+        <div class="reply">
+            <div class="user_avatar"><img src="<?php echo $message->avatar; ?>" width="32px" height="32px" /></div>
+            <h2><?php echo $message->first_name.' '.$message->last_name; ?></h2>
+            <p><?php echo nl2br($message->message); ?></p>
+            <?php
+            if ($message->user_id == $user->user_id || ($actions == 'some' && $message->user_type_id == 3) || ($actions == 'all' && ($message->user_type_id == 2 || $message->user_type_id == 3))) {
+            ?>
+                <div class="topic_actions">
+                    <a class="delete_button" href="index.php?c=bulletinBoard&a=deleteMessage&message_id=<?php echo $message->topic_message_id; ?>">Delete</a>
+                    <a class="modify_button" href="index.php?c=bulletinBoard&a=modifyMessage&message_id=<?php echo $message->topic_message_id; ?>">Modify</a>
+                </div>
+            <?php
+            }   // if
+            ?>
+        </div>
+    <?php 
+        } // foreach
+    } // if 
+    ?>
+    <div class="form">
+        <form action="index.php?c=bulletinBoard&a=postMessage&topic_id=<?php echo $topic->topic_id; ?>" method="POST">
+            <textarea name="message" rows="4" cols="20"></textarea>
+            <input type="submit" value="Post message" />
+        </form>
+    </div>
+</div>

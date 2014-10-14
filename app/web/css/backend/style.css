@@ -1,0 +1,221 @@
+@charset "utf-8";
+/* CSS Document
+** This CSS is for Back-end interface **
+** This CSS file contain only general CSS for Back-end interface **
+*/
+
+body {
+    font-family: Verdana;
+    font-size:12px;
+    margin:0px;
+}
+
+.header {height:48px; background-image:url(../../images/backend/header-bar.png); background-repeat:repeat-x;}
+.header-container {width:1024px;height:35px;margin:0px auto;}
+
+.dropdown {width:1024px;height:35px;float:right;font-size:14px;color:#cccccc;margin:6px -5px auto;text-align:right;}
+a.dropdown-btn {width:25px;height:35px;z-index:1;text-decoration:none;background:url(../../images/backend/dropdown.png) no-repeat;cursor:pointer;display:block;float:right;margin:-6px 5px auto;}
+a.dropdown-btn:hover {background-position:bottom; text-decoration:none;}
+
+#dropdown-container {
+	font-size:12px;
+	color:#ffffff;
+	border: 1px solid #ff2929;
+	margin:0px auto;
+	padding-top:5px;
+	padding-right:10px;
+	padding-bottom:5px;
+	padding-left:10px;
+	z-index:100;
+	background-color:#333333;
+	position:relative;
+	clear:right;
+	float:right;
+	display:block;
+	text-align:left;
+	opacity:0.9;
+	filter:alpha(opacity=90);
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;}
+
+#dropdown-container a {color:#cccccc; padding:0px 15px 0px 15px;text-decoration:none;font-size:12px;line-height:25px;display:block;}
+#dropdown-container a:hover {color:#ffffff; background-color:#ff2929; padding:0px 15px 0px 15px;}
+
+#breakcrumb { font-size: 12px; margin: 20px 0 10px 10px; color: #333333; }
+#breakcrumb a { text-decoration: none; color: #666666; }
+#breakcrumb a:hover{ color: #ff2929; }
+
+.be-wrapper {width:1024px; height:1000px; margin:-1px auto; background-color:transparent;}
+
+/*
+<<<<< LEFT SIDEBAR >>>>>
+*/
+.left-sidebar {width:220px; height:1000px; float:left;}
+
+/* -- LEFT SIDEBAR - User's Avatar and Name -- */
+.avatar {height:64px; margin:10px 10px;}
+.avatar img {width:64px; height:64px; float:left; border:2px solid #cccccc; margin-right:10px; -moz-border-radius:8px; -webkit-border-radius:8px;}
+.avater strong {font-size:16px; float:right;}
+/*-- LEFT SIDEBAR - Main Navigations: [Home][Messages][Picture Gallery] --*/
+.left-nav {font-size:14px; height:100px; margin:10px; padding:10px; border:none;}
+#main-nav-btn {text-decoration:none; border:none;}
+#main-nav-btn img {width:24px; height:24px; margin:5px 7px 0px 0px; border:hidden;}
+#main-nav-btn strong {display:inline; position:absolute; margin-top:8px; float:left; color:#808080;}
+
+/** <<<<< END OF LEFT SIDEBAR >>>>> **/
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/** <<<<< LEFT SIDEBAR - Sub-widget >>>>> **/
+/*
+** === Left Widget 1 Widget === **
+*/
+.left-widget-1 {font-family:Century Gothic; text-decoration:none; width:100%; background-color:transparent;}
+/*-- Left Widget 1 Container --*/
+.left-wid-1-container {width:200px; height:auto; margin:0px auto; background:#e5e5e5; padding:2px 2px 0px 2px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+/*-- Left Widget 1 Title --*/
+#left-wid-1-title {width:198px; height:35px; font-size:14px; color:#FFF; text-align:center; background-image:url(../../images/backend/widget-header.png); background-repeat:repeat-x; margin-bottom:-7px; padding-top:6px; margin-left:1px; cursor:pointer;}
+/*-- Left Widget 1 Button Container --*/
+#left-wid-1-btn-container {width:200px; height:99px; padding:0px 1px; margin: 0px auto auto 0;}
+/*-- Left Widget 1 Button --*/
+a.left-wid-1-btn {line-height:0px; width:198px; height:32px; z-index:100; text-decoration:none; background:#FFF; text-align:left; cursor:pointer; float:left; color:#4E4E4E; border:none;}
+.left-wid-1-btn img {position:relative; border:none; padding:8px; background-repeat:no-repeat; float:left;}
+.left-wid-1-btn span {width:165px; display:block; font-size:13px; margin-top:14px; margin-left:35px; color:#808080;}
+/*
+** === Left Widget 2 Widget === **
+*/
+.left-widget-2 {height:200px; background-color:#936; margin-top:20px;}
+/*-- Left Widget 2 Widget --*/
+.left-widget-2 {font-family:Century Gothic; text-decoration:none; width:100%; background-color:transparent;}
+/*-- Left Widget 2 Container --*/
+.left-wid-2-container {width:200px; height:auto; margin:0px auto; background:#e5e5e5; padding:2px 2px 0px 2px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+/*-- Left Widget 2 Title --*/
+#left-wid-2-title {width:198px; height:35px; font-size:14px; color:#FFF; text-align:center; background-image:url(../../images/backend/widget-header.png); background-repeat:repeat-x; margin-bottom:-7px; padding-top:6px; margin-left:1px; cursor:pointer;}
+/*-- Left Widget 2 Button Container --*/
+#left-wid-2-btn-container {width:200px; height:67px; padding:0px 1px; margin: 0px auto auto 0;}
+/*-- Left Widget 2 Button --*/
+a.left-wid-2-btn {line-height:0px; width:198px; height:32px; z-index:100; text-decoration:none; background:#FFF; text-align:left; cursor:pointer; float:left; color:#4E4E4E; border:none;}
+.left-wid-2-btn img {position:relative; border:none; padding:8px; background-repeat:no-repeat; float:left;}
+.left-wid-2-btn span {width:165px; display:block; font-size:13px; margin-top:14px; margin-left:35px; color:#808080;}
+
+/** <<<<< END OF LEFT SIDEBAR >>>>> **/
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/** <<<<< CONTENT - General >>>>> **/
+
+.container {width:580px; min-height:590px; margin:0px auto; border-left:1px solid #cccccc;float:left; position:relative;}
+.container hr {width:100%;margin:10px auto 5px auto;color:#e5e5e5;size:1px;float:left;opacity:0.5;filter:alpha(opacity=50);}
+/* Search Bar */
+#search-container {border: 1px solid #cccccc;height:23px;width:550px;float:left;margin-top:10px;margin-left:17px;margin-bottom:10px;}
+#search-container img {float:right;margin:2px auto;padding-right:3px;padding-left:3px;border-left: 1px outset #cccccc;cursor:pointer;}
+#search-textbox {font-family: Century Gothic;height:20px;width: 513px;color: #cccccc;font-style:italic;border:none;margin-left:5px;position:absolute;}
+
+/** <<<<< END OF CONTENT >>>>> **/
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/** <<<<< RIGHT SIDEBAR >>>>> **/
+
+.right-sidebar {width:220px; height:1000px; float:right; margin:0px; z-index:2; position:relative;}
+/*-- Calendar --*/
+.calendar {font-family: Century Gothic; line-height:5px; text-decoration:none; width:46px; height:49px; background-image:url(../../images/backend/calendar.gif); background-repeat:no-repeat; margin: -10px auto auto 160px;}
+.calendar h5 {color:#ffffff; text-align:center; padding-top:8px;}
+.calendar h2 {color:#666666; text-align:center;}
+/*
+** === Events Widget === **
+*/
+/*-- Events Widget --*/
+.event-widget {font-family: Century Gothic; text-decoration:none; width:100%; height:250px;}
+/*-- Events Widget Container --*/
+.event-container {width:200px; height:auto; margin:0px auto;}
+/*-- Events Widget Title --*/
+.event-title {height:25px; padding-top:15px; margin-bottom:5px;}
+.event-title img {width:25px; height:25px; float:left; margin-right:10px; border:none;}
+.event-title strong {font-size:16px; text-decoration:none; float:left; color:#808080; margin-top:2px;}
+/*-- Event Button Container --*/
+#event-btn-container {width:200px; height:200px; background:#e5e5e5; padding:2px; margin-left:-2px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+/*-- Events Button --*/
+a.event-btn {font:10px; line-height:0px; width:200px; height:40px; z-index:100; text-decoration:none; background-image:url(../../images/backend/event-bar.jpg); background-repeat:repeat-x; text-align:left; cursor:pointer; display:block; float:left; font-weight:normal; color:#4E4E4E;}
+.event-btn img {position:absolute; padding:12px; border:none;}
+.event-btn strong {display:block;font-size:13px;line-height:2px; margin-top:12px; margin-left:40px; color:#808080;}
+.event-btn p {display:block; margin-left:40px; color:#808080;}
+
+
+/** === Instant Messagers Widget === **
+*/
+/*-- Instant Messagers Widget --*/
+.im-widget {font-family: Century Gothic; text-decoration:none; width:100%; height:250px;}
+/*-- Instant Messangers Container --*/
+.im-container {width:200px; height:auto; margin:0px auto; border:2px #CCCCCC;}
+/*-- Events Messangers Title --*/
+.im-title {height:25px; padding-top:15px; margin-bottom:1px;}
+.im-title img {width:25px; height:21px; float:left; margin-right:10px; border:none;}
+.im-title strong {font-size:16px; text-decoration:none; float:left; color:#808080;}
+#im-search-container {border: 1px solid #cccccc;height:23px;width:200px;margin-top:10px;margin-left:0px;}
+#im-search-container img {float:left;margin:2px auto;padding-right:3px;padding-left:3px;cursor:pointer;}
+#im-textbox {font-family: Century Gothic;height:20px;width: 165px;color: #cccccc;font-style:italic;border:none;margin-left:5px;position:absolute;}
+/*-- Instant Messengers Button Container --*/
+#im-btn-container {width:200px; height:204px; background:#e5e5e5; padding:2px; margin-left:-2px;-webkit-border-radius:3px;}
+/*-- Instant Messengers Button --*/
+a.im-btn {font:10px; line-height:0px; width:200px; height:40px; z-index:100; text-decoration:none; background:#FFF; text-align:left; cursor:pointer; display:block; float:left; font-weight:normal; color:#4E4E4E; border:none; margin-bottom:1px;}
+.im-btn #im-avatar {position:absolute; border:none; padding:4px; background-repeat:no-repeat; float:left;}
+.im-btn span {width:145px; display:block; font-size:11px; line-height:11px; margin-top:13px; margin-left:45px; color:#808080;}
+.im-btn #im-status {position:relative; border: none; float:right;}
+
+/** <<<<< END OF RIGHT SIDEBAR >>>>> **/
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/** <<<<< ADDITIONAL CSS HERE >>>>> **/
+
+/** ADDITIONAL CSS **/
+
+/*-- Instant Messengers Button Container --*/
+
+#im-new-container {width:200px;height:204px;overflow: auto;overflow-x:hidden;background:#e5e5e5;padding:2px;margin-left:-2px;text-align:center;-webkit-border-radius:3px;}
+
+/*-- Instant Messengers Button --*/
+a.im-btn {font:10px; line-height:0px; width:200px; height:40px; z-index:100; text-decoration:none; background:#FFF; text-align:left; cursor:pointer; display:block; float:left; font-weight:normal; color:#4E4E4E; border:none; margin-bottom:1px;}
+.im-btn #im-avatar {position:relative; border:none; padding:4px; background-repeat:no-repeat; float:left;}
+.im-btn span {width:145px; display:block; font-size:11px; line-height:11px; margin-top:13px; margin-left:45px; color:#808080;}
+.im-btn #im-status {position:relative; border: none; float:right;}
+/*
+<<<<< END OF RIGHT SIDEBAR >>>>>
+*/
+
+/*Fancy Box Message Bar*/
+#new-message-container{width:450px; height:230px;}
+#new-message-header{background-color: #666666;line-height: 2.20;padding-left: 10px;color: white;font-weight: bolder;font-size:14px;margin: 0px;}
+#new-message-content{height:140px;border-left : #CCCCCC solid 1px;border-right : #CCCCCC solid 1px;}
+#new-message-content #error-message{margin: 5px;border:1px solid #cccccc;background-color:#fcefa1;padding:3px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+
+#error-message div{margin-left:5px;}
+#error-message div img{margin-top:1px;}
+#error-message div label{vertical-align:top;margin-left: 4px;}
+
+#new-message-footer{border-top: #CCCCCC solid 1px;background:#F2F2F2;height: 45px;}
+#new-message-footer input{float:right;margin-top:10px;margin-right:5px;}
+
+div.form-row {clear: both;padding-top: 10px;}
+div.form-row span.label {float: left;width: 80px;text-align: right;}
+div.form-row span.form-type {float: right;width: 360px;text-align: left;}
+
+#im-name-autosuggest{width: 344px;height:auto;font-size:12px;margin:0px auto;float: right;z-index:100;position:absolute;padding:2px 0px 2px 0px;border-left: 1px solid #666666;border-right: 1px solid #666666;border-bottom: 1px solid #666666;} 
+
+div.form-row span input{width:95%;border: 1px solid #cccccc;color:#666666;font-style: italic;}
+div.form-row span textarea{width:95%;height:60px;resize: none;direction: ltr;overflow: auto;border: 1px solid #cccccc;}
+
+/*
+<<<<< END OF FANCY BOX MESSAGE STYLE >>>>>
+*/
+/*
+** === Policy Page === **
+*/
+#policy-header{width:580px;height:50px;margin-bottom: 0px;}
+/* -- Left Header -- */
+#header-left{float:left;margin-top:4px;}
+#header-left img{padding-left:10px;padding-right:10px;}
+#header-left h2{font-size:25px;display:inline;vertical-align:top;line-height:50px;color:#666;}
+/* -- Right Header -- */
+#header-right{float:right;margin-top:20px;}
+#header-right a{font-size:14px;text-decoration:none;padding-top:3px;padding-right:10px;padding-bottom:3px;padding-left:10px;background-color:#808080;color:#fff;border:1px solid #ccc;}
+#header-right a:hover{font-size:14px;text-decoration:none;padding-top:3px;padding-right:10px;padding-bottom:3px;padding-left:10px;background-color:#ff2929;color:#fff;}
+/* -- Policy Container -- */
+.policy-container{width:560px;height:auto;clear:left;font-size:13px;text-align:justify;padding-left:10px;padding-right:10px;padding-bottom:10px;}
+.policy-container ol {padding-bottom:5px;}
+/* -- Policy Footer -- */
+#policy-footer{width:560px;height:40px;clear:left;background:#f2f2f2;border:1px solid #D1D1D1;}
+.footer-tag{font-size:14px;width:560px;height:20px;margin-top:9px;color:#999;text-align:center;}

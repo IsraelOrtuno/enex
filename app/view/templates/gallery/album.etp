@@ -1,0 +1,76 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'camera-35x25.png' ?>" width="35px" height="26px" /><h2>Photo Gallery</h2>
+        </div>
+        <div id="right-gal-head">
+            <?php foreach ($albums as $album)
+            if ($album->user_id == $user->user_id || $user->user_type_id == 1 || $user->user_type_id == 2) {
+            echo '<a id="formbox" href="#createAlbum">+ Upload Image</a>'; } ?> <a href="index.php?c=gallery&a=index">< Back to Gallery</a>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=gallery&a=index">Picture Gallery</a> > 
+        <?php foreach ($albums as $album) {$albumName = '<strong>' . $album->album_name . '</strong>';}?><?php echo $albumName ?>
+    </div>
+    <div style="display: none;">
+        <div id="createAlbum" style="width:480px;height:auto;overflow:auto;">
+            <form id="upload-photo" name="createAlbum" method="post" enctype="multipart/form-data">
+                <h2>Upload Photo</h2>
+                <hr size="1px" color="#cccccc" />
+                You can upload JPG, GIF or PNG files.
+                <div id="photo-bar"><strong>Photo:</strong><input type="file" name="photo" id="photo" required="required" /></div>
+                <div id="btn-bar"><input type="submit" name="submit" id="upload-btn" value="Upload" /></div>
+            </form>
+        </div>
+    </div>
+
+<?php
+// WARNING message IF there is no photo in the album.
+if (!$thumbnails) {
+    echo '<div class="nofile-msg"><span>There is no image this album</span></div>';
+} else {
+    $album = $_GET['album'];
+    $i = 0;
+    $table = '<table border="0" cellpadding="3px" style="margin-left: 5px; max-width:570px;">';
+    foreach ($thumbnails as $thumbnail) {
+        if ($i % 4 == 0) { // if $i is divisible by our target number (in this case "3")
+            $table .= '<tr><td width="130px" align="center">
+                <div class="img-frame">';
+                if ($thumbnail->user_id == $user->user_id || $user->user_type_id == 1 || $user->user_type_id == 2) {
+                $table .= '<div id="del-icon">
+                        <a href="index.php?c=gallery&a=deleteImage&album=' . $album . '&image=' . $thumbnail->photo_id . '&photo=' . $thumbnail->photo_name . '" onclick="return confirm(\'Are you sure you want to delete this photo?\')">
+                            <img src="' . IMAGES_BACKEND . "close.png" . '" width="15px" height="15px" border="0" />
+                        </a>
+                    </div>';
+                }
+                $table .= '<a href="index.php?c=gallery&a=photo&album=' . $album . '&photo=' . $thumbnail->photo_id . '">
+                        <img src="' . $thumbnail->thumbnail_url . '" class="thumb-img" />
+                    </a>
+                    </div>
+                </div>
+            </td>';
+        } else {
+            $table .= '<td width="130px" align="center">
+                <div class="img-frame">';
+                if ($thumbnail->user_id == $user->user_id || $user->user_type_id == 1 || $user->user_type_id == 2) {
+                $table .= '<div id="del-icon">
+                        <a href="index.php?c=gallery&a=deleteImage&album=' . $album . '&image=' . $thumbnail->photo_id . '&photo=' . $thumbnail->photo_name . '" onclick="return confirm(\'Are you sure you want to delete this photo?\')">
+                            <img src="' . IMAGES_BACKEND . "close.png" . '" width="15px" height="15px" border="0" />
+                        </a>
+                    </div>';
+                }
+                $table .= '<a href="index.php?c=gallery&a=photo&album=' . $album . '&photo=' . $thumbnail->photo_id . '">
+                        <img src="' . $thumbnail->thumbnail_url . '" class="thumb-img"/>
+                    </a>
+                    </div>
+                </div>
+            </td>';
+        }
+        $i++;
+    }
+    $table .= '</table>';
+    echo $table;
+} ?>
+</div>

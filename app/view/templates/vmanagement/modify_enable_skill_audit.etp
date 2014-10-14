@@ -1,0 +1,50 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'camera-35x25.png' ?>" width="35px" height="26px" /><h2>Volunteering Management</h2>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=vmanagement&a=index">Volunteering Management</a> > Modify skill
+    </div>
+    <!-- Create Album Form -->
+    <div style="display: none;">
+        <div id="createAlbum" style="width:480px;height:auto;overflow:auto;">
+            <form id="create-album" name="createAlbum" method="post">
+                <h2>Create Album</h2>
+                <hr size="1px" color="#cccccc" />
+                Please enter album name to create a photo album.
+                <div id="album-name"><strong>Album Name : <input type="text" name="albumname" size="50" required="required" /></strong></div>
+                <div id="btn-bar"><input type="submit" id="create-btn" value="Create" /></div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php if (isset($skill_audited)) { ?>
+<div>Skill successfully audited</div>
+<?php } else { ?>
+<table>
+    <form name="modify_skill" action="#" method="POST">
+        <input type="hidden" name="skill_type_id" value="<?php echo $skill->skill_type_id; ?>" />
+        <tr>
+            <td><label for="skill_type_name">Skill Name:</label></td>
+            <td><input type="text" name="skill_type_name" value="<?php echo $skill->skill_type_name; ?>" /></td>
+        </tr>
+        <tr>
+            <td>level:</td>
+            <td><input type="text" name="level" value="<?php echo $skill->level; ?>" /></td>
+        </tr>  
+        <tr>
+            <td><label for="user_id">User ID:</label></td>
+            <td><input type="text" name="user_id" value="<?php echo $skill->user_id; ?>" /></td>
+        </tr>
+        <td align="right"><input type="reset" value="Clear all" />
+        <input type="submit" value="Save" name="save" /></td>       
+    </form>
+</table>
+<?php } ?>
+<br/>
+<div id="back-btn">
+     <a href="index.php?c=vmanagement&a=enable_skill_audit">Back to Volunteer skill</a> 
+</div>

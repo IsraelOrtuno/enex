@@ -1,0 +1,71 @@
+<!-- VIEW PAGE HEADER --->
+<div id="im-content-header">
+    <div id="left-im-header">
+        <img src="<?php echo IMAGES_BACKEND. 'big-mail.png' ?>" />
+        <label>Messages</label>	
+    </div>
+    <div id="right-im-header">
+        <input class ="im-button-style" type="button" value="<  Back to Messages" onclick="window.location = './index.php?c=im'"/>
+    </div>
+</div>
+<hr />
+<!-- VIEW PAGE HEADER  --->
+<div id="breakcrumb" style="margin-left:10px;clear:both;">
+    <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=im&a=index">Messages</a> >
+        <?php if($view==0){echo "Inbox"; }else if($view==1){ echo "Sent"; }else if($view==2){ echo "IM Conversation"; }?>
+    </div>
+<hr/>
+<!-- BODY -->
+<div id="im-new-message" style="clear:both">
+    <div id="view-im-header">
+    <div id="view-im-image"><img src="<?php echo IMAGES_BACKEND. $result->avatar ?>" width="50px" height="50px" /></div>
+    <div id="view-im-details">
+        <span id="view-im-from">
+            <span><strong><?php echo $result->first_name." ". $result->last_name ?></strong></span>
+            <span><?php echo  $result->email; ?></span>
+        </span>
+        <span id="view-im-timedetails"><?php echo date('M d \a\t h:i a', $result->unixtime); ?></span>
+        <div id = "view-im-to">
+            <span id="view-to">
+                <?php $user_msg = ""; $user_to = ""; if($view==0){ $user_msg = "To : "; $user_to = "Me"; }if($view==1){ $user_msg = "By : "; $user_to = "You"; } if($view==2 && ($result->user_id==$user->user_id)) { $user_msg = "By : "; $user_to = "You"; } if($view==2 && ($result->user_id!=$user->user_id)) { $user_msg = "To : "; $user_to = "Me"; }?>
+                <span><strong><?php echo $user_msg; ?></strong></span>
+                <span><?php echo $user_to; ?></span>
+            </span>
+            <span id="view-im-actions" style="float:right;margin-right: 5px;">
+                <?php if($view==0){ echo "<a id='reply-icon' href='#' class='im-view-action-icon'><img id='im-reply-icon' src='".IMAGES_BACKEND."reply (15 x 15).png' height='15' width='15'  title='reply message' alt='reply' /></a>"; } ?>
+                <?php if($view==0){ echo "<a href='#' class='im-view-action-icon' onclick='performAction(0,$result->message_id);'><img id='im-unread-icon' src='".IMAGES_BACKEND."unread (15 x 15).png' height='15' width='15'  title='unread' alt='unread' /></a>"; } ?>
+                <?php if(($view==0 && $user->user_type_id !=1) || ($view==2 && $user->user_type_id !=1)){ echo "<a href='#' class='im-view-action-icon' onclick='performAction(1,$result->message_id);'><img id='im-report-icon' src='".IMAGES_BACKEND. "report (15 x 15).png' height='15' width='15' title='report message' alt='report' /></a>"; } ?>
+                <a href="#" class="im-view-action-icon" onclick="performAction(2,<?php echo $result->message_id; ?>);"><img id="im-status" src="<?php echo IMAGES_BACKEND. 'del  (15 x 15).png' ?>" height="15" width="15" title="delete" alt="delete"/> </a>
+                <input id="user_email" type="hidden" value="<?php echo  $result->email; ?>" />
+            </span>
+        </div>
+    </div>
+    </div>
+    <div id="view-im-message">
+        <p><strong>Message : </strong></p>
+        <p><?php echo  $result->content; ?></p>
+    </div>
+</div>
+<!-- BODY -->
+
+<script>
+//This function displays message box and put input the user email address
+//[email = email address]
+$(document).ready(function(){
+    $("#inline").fancybox({
+        'overlayColor'  : '#000',  
+        'overlayOpacity': 0.7, 
+        'background'    : '#000',
+        'scrolling'     : 'no',
+        'hideOnContentClick': false
+    });
+    
+        var email = $("#user_email").val();
+        $("#reply-icon").click(function(){
+        $("#inline").trigger('click');
+        $("#message-texts-send").val(email);
+        $("#message-content").focus();
+    });
+}); 
+
+</script>

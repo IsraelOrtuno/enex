@@ -1,0 +1,37 @@
+<script language="javascript">
+$(function(){
+	$('.datepicker').datepicker({dateFormat:'yy-mm-dd',changeMonth: true,changeYear: true, yearRange: '1960:<?php echo date('Y');?>'});
+});
+</script>
+</script>
+<div style="text-align:center">
+<h2>User Management</h2>
+<a href="index.php?c=user">User List</a>
+</div>
+<?php
+if(isset($input['user_id']) && $input['user_id']>0)echo '<h3>User Modification</h3>';
+else echo '<h3>User Registration</h3>';
+if(!empty($errormsg))echo '<p class="error">'.$errormsg.'</p>';
+if(!empty($successmsg))echo '<p class="success">'.$successmsg.'</p>';
+?>
+<form enctype="multipart/form-data" action="index.php?c=user&a=addpost" method="post">
+<input type="hidden" name="dataid" value="<?php echo isset($input['user_id'])?$input['user_id']:'';?>" />
+<table>
+<tr><td>User Type</td><td>:</td><td>
+<select name="user_type">
+<?php foreach($usertype as $k=>$v)echo '<option value="'.$v['user_type_id'].'">'.$v['type'].'</option>'; ?>
+</select></td></tr>
+<tr><td>First Name</td><td>:</td><td><input type="text" name="first_name" value="<?php echo isset($input['first_name'])?$input['first_name']:'';?>" size="15" /></td></tr>
+<tr><td>Last Name</td><td>:</td><td><input type="text" name="last_name" value="<?php echo isset($input['last_name'])?$input['last_name']:'';?>" size="15" /></td></tr>
+<tr><td>Address</td><td>:</td><td><input type="text" name="address" value="<?php echo isset($input['address'])?$input['address']:'';?>" size="45" /></td></tr>
+<tr><td>Email</td><td>:</td><td><input type="text" name="email" value="<?php echo isset($input['first_name'])?$input['email']:'';?>" size="20" /></td></tr>
+<tr><td>Post Code</td><td>:</td><td><input type="text" name="postcode" value="<?php echo isset($input['first_name'])?$input['post_code']:'';?>" size="10" /></td></tr>
+<tr><td>Phone</td><td>:</td><td><input type="text" name="phone" value="<?php echo isset($input['phone'])?$input['phone']:'';?>" size="15" /></td></tr>
+<tr><td>Password</td><td>:</td><td><input type="password" name="password" value="" size="15" /></td></tr>
+<tr><td>Gender</td><td>:</td><td><select name="gender"><option value="0">Male</option><option value="1" <?php echo (isset($input['gender']) && $input['gender']==1)?'selected':'';?>>Female</option></select></td></tr>
+<tr><td>Birthday</td><td>:</td><td><input type="text" class="datepicker" name="birthday" value="<?php echo isset($input['birthday'])?$input['birthday']:'';?>" size="10" /></td></tr>
+<tr><td>Active</td><td>:</td><td><select name="active"><option value="0">Yes</option><option value="1" <?php echo (isset($input['deleted']) && $input['deleted']==1)?'selected':'';?>>No</option></select></td></tr>
+<tr><td>Avatar</td><td>:</td><td><input type="file" name="avatar" value="" size="35" /></td></tr>
+<tr><td colspan="3"><input type="submit" value="Save" /></td></tr>
+</table>
+</form>

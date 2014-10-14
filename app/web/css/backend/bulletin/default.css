@@ -1,0 +1,154 @@
+#bulletin {
+    padding: 10px;
+}
+
+#bulletin h1 {
+    text-align: center;
+}
+
+#bulletin .form {
+    padding: 0;
+    margin: 0;
+}
+
+#bulletin .error {
+    color: #f58061;
+    font-weight: bold;
+    background: url('../../../images/backend/bulletin/error.png') no-repeat 5px;
+    padding: 7px 0 7px 25px;
+}
+
+#bulletin .topic {
+    margin-bottom: 10px;
+    position: relative;
+    background: #E4E4E4;
+    border-radius: 10px;
+    padding: 3px 5px 5px 5px;
+
+}
+
+#bulletin h2 {
+    margin: 5px 0 5px 0;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#bulletin h3 {
+    margin: 0px;
+    padding: 0px;
+    color: #878787;
+    font-weight: normal;
+    font-size: 10px;
+    color: #363636;
+}
+
+#bulletin .admin_actions {
+    background: url('../../../images/backend/bulletin/tools.jpg') no-repeat;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+#bulletin .topic_actions {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+#bulletin a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+#bulletin a:hover {
+    text-decoration: underline;
+    color: grey;
+}
+
+#bulletin breadcrumb a {
+    font-weight: normal;
+}
+
+#bulletin a.delete_button {
+    background: url('../../../images/backend/bulletin/delete.png') no-repeat;
+    padding-left: 20px;
+}
+
+#bulletin a.modify_button {
+    background: url('../../../images/backend/bulletin/edit.png') no-repeat;
+    padding-left: 20px;
+}
+
+#bulletin p {
+    margin: 5px 0 5px 0;
+    text-align: justify;
+}
+
+#bulletin .reply {
+    padding: 5px;
+    min-height: 32px;
+    background: #EDEFF4;
+    border-bottom: 1px solid #D2D9E7;
+    position: relative;
+}
+
+#bulletin .topic .reply h2 {
+    font-size: 12px;
+}
+
+#bulletin .user_avatar {
+    float: left;
+    margin-right: 5px;
+}
+
+#bulletin .reply .user_avatar {
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+#bulletin h4 {
+    margin: 0;
+    padding: 0;
+    color: #878787;
+    font-size: 10px;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 5px;
+}
+
+#bulletin .form input[type=text], #bulletin .form textarea {
+    width: 100%;
+    margin: 0;
+    padding: 3px;
+    border: 1px solid grey;
+    font-family: verdana;
+    margin-bottom: 3px;
+}
+
+#bulletin .form input[type=submit] {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 7px 22px 7px 22px;
+    border-radius: 7px;
+    background: black;
+    color: white;
+    border: none;
+    margin: 5px 0 8px 0;
+}
+
+#bulletin .form label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+#bulletin .odd_row {
+    background: #D2D9E7;
+}
+
+/* #EDEFF4 */

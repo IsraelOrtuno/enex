@@ -1,0 +1,59 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'camera-35x25.png' ?>" width="35px" height="26px" /><h2>Volunteering management</h2>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=vmanagement&a=index"> Volunteering management </a> > Event details 
+    </div>
+    <!-- Create Album Form -->
+    <div style="display: none;">
+        <div id="createAlbum" style="width:480px;height:auto;overflow:auto;">
+            <form id="create-album" name="createAlbum" method="post">
+                <h2>Create Album</h2>
+                <hr size="1px" color="#cccccc" />
+                Please enter album name to create a photo album.
+                <div id="album-name"><strong>Album Name : <input type="text" name="albumname" size="50" required="required" /></strong></div>
+                <div id="btn-bar"><input type="submit" id="create-btn" value="Create" /></div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="event_details">
+    <?php foreach ($event as $event) { ?>
+
+    <h2><?php echo $event->event_name; ?></h2>
+    <table border="1" width="580px">
+        <tr>
+            <td width="130px"><strong>Date</strong></td><td width="10px"> : </td><td><?php echo $event->date; ?></td>
+        </tr>
+        <tr>
+            <td valign="top"><strong>Description</strong></td><td valign="top"> : </td><td><?php echo $event->description; ?></td>
+        </tr>
+        <tr>
+            <td><strong>Capacity</strong></td><td> : </td><td><?php echo $event->capacity; ?></td>
+        </tr>
+        <tr>
+            <td><strong>Skills required</strong></td><td> : </td><td><?php echo $event->skill_type_name; ?></td>
+        </tr>
+        <tr>
+            <td><strong>Event type</strong></td><td> : </td><td><?php echo $event->event_type_name; ?></td>
+        </tr>
+        <tr>
+            <td><strong>User</strong></td><td> : </td><td><?php echo $event->first_name.' '.$event->last_name; ?></td>
+        </tr>
+        <tr>
+            <td valign="top"><strong>Users</strong></td><td valign="top"> : </td><td><?php foreach ($event_users as $event_user)
+            echo $event_user->first_name.'<br/>'; ?></td>
+        </tr>
+    </table>
+    <?php } ?>
+</div>
+    <br/>
+    <br/>
+
+<div id="back-btn">
+     <a href="index.php?c=vmanagement&a=index">Back to events list</a> 
+</div>

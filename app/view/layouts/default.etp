@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_HOME. 'style.css'; ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_HOME. 'reset.css'; ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_HOME. 'slideshow.css'; ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS . 'jquery-ui.css'; ?>" />
+<script type="text/javascript" src="<?php echo JS. 'jquery-1.4.3.min.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo JS. 'jquery.min.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo JS. 'jquery-ui.min.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo JS_HOME. 'slideshow.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo JS_HOME. 'tms-0.3.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo JS_HOME. 'tms-presets.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo JS_HOME. 'js-accessibility.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo JS_HOME. 'vsa-javascript.js'; ?>"></script>
+<title><?php echo $title; ?></title>
+<script>
+function validateLogin(){
+    $.ajax({
+        url: 'index.php?c=login&a=loginUser',
+        type: 'POST',
+        data: {
+            email : $('input[name=emailaddress]').val(),
+            password : $('input[name=password]').val()
+        },
+        success: function(data) {
+            if (data)
+                alert(data);
+            else
+                location.href = 'index.php?c=bulletinBoard';
+        }
+    });
+}
+$(document).ready(function(){
+    $('#login-email-address, #login-password').keypress(function(event){
+        if (event.which == 13) {
+            validateLogin();
+        }
+    });
+});
+
+</script>
+</head>
+<body id="wrapper">
+    <div id="header">
+        <div id="header-logo">
+            <a href="index.php?c=home"><img src="<?php echo IMAGES_HOME. 'logo.png' ?>" width="200px" height="100px" style="margin:10px auto auto 30px" /></a>
+        </div>
+        <div class="header-right">
+            <!-- User Login -->
+            <div id="login">
+                <a href="#" id="login-title">Login</a>
+                <div id="login-form" style="display:none;">
+                    <form method="post" action="./index.php?c=backEnd">
+                        <label>Email:</label><br /><input id="login-email-address" class="input-text" name="emailaddress" type="text" size="20" tabindex="1" /><br />
+                        <label>Password:</label><br /><input id="login-password" class="input-text" name="password" type="password" size="20" tabindex="2" /><br /><br />
+                        <input type="button" value="Log In" align="right" id="login-button" tabindex="3" onClick="validateLogin()" />
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <div id="search-container">
+                    <input id="search-textbox" type="text" value="Search......" maxlength="100" onFocus="clearSearchField()" onBlur="setSearchField()" />
+                    <img src="<?php echo IMAGES_HOME. 'search.jpg' ?>" width="20"  height="20" title="search" alt="Search" />
+                </div>
+            </div>
+            
+            <!-- Main Navigation [Home, About Us, Contacts] -->
+            <div class="main-nav">
+                <ul>
+                    <li><a href="index.php?c=home&a=index" id="home">Home</a></li>
+                    <li><a href="index.php?c=home&a=aboutUs" id="aboutUs">About Us</a></li>
+                    <li><a href="index.php?c=home&a=contacts" id="contacts">Contacts</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <?php echo $content; ?>
+    
+    <div class="footer">
+        <div class="t-and-c"><center><a href="index.php?c=home&a=terms_and_conditions">Terms and conditions</a></center></div>
+        <div class="footer-tag">Simple Heart &copy; 2011</div>
+    </div>
+</body>
+</html>

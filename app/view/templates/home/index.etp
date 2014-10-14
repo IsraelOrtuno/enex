@@ -1,0 +1,115 @@
+<script type="text/css">
+    #home{background:#4d4d4d;color:#ffffff;text-decoration:none; padding:10px 20px 10px 20px;-moz-border-radius:10px;-webkit-border-radius:10px;}
+</script>
+<div class="slideshow">
+        <div class="box">
+            <div class="padding">
+				<div class="slider">
+					<ul class="items">
+                        <li>
+                            <img src="<?php echo IMAGES_HOME. 'slideshow/slide-1.jpg' ?>" alt="">
+                            <div class="banner">
+                                <h4>God</h4>
+                                <h5>lives in our hearts</h5>
+                                Nasertya nlase dusce hertse nem ipsumadera.<br>
+                                Kaecenas tristique oasem. Duis ultric ies pharagc accumsa.<br>
+                                <a href="#" class="link9">Read More</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="<?php echo IMAGES_HOME. 'slideshow/slide-2.jpg' ?>" alt="">
+                            <div class="banner">
+				<h4>Faithful</h4>
+                                <h5>with god's word</h5>
+                                Nasertya nlase dusce hertse nem ipsumadera.<br>
+                                Kaecenas tristique oasem. Duis ultric ies pharagc accumsa.<br>
+                                <a href="#" class="link9">Read More</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="<?php echo IMAGES_HOME. 'slideshow/slide-3.jpg' ?>" alt="">
+                            <div class="banner">
+				<h4>Open</h4>
+                                <h5>your heart to god</h5>
+                                Nasertya nlase dusce hertse nem ipsumadera.<br>
+                                Kaecenas tristique oasem. Duis ultric ies pharagc accumsa.<br>
+				<a href="#" class="link9">Read More</a>
+                            </div>
+                        </li>
+                    </ul>
+				</div>
+            </div>
+        </div>
+	</div>
+
+<div id="container">
+    <div class="panes">
+		<div style="display:block;">
+			<span id="content-title">Fundraising dinner</span><br /><br />
+			<span id="content-detail">
+				Be a part of change and catch our live broadcast fundraising dinner March 3rd 2012, join the hundreds who made a pledge to donate or you can donate during the live show via SMS “SH” to 3113.
+			</span>
+		</div>
+		<div style="display:none;">
+			<span id="content-title">New Year Party</span><br /><br />
+			<span id="content-detail">
+				Join our Facebook: page or follow us on twitter and be one of the five lucky people going on an all-expenses paid trip to London for our annual New Year costume event December 28 2011
+			</span>
+		</div>
+		<div style="display:none;">
+			<span id="content-title">Comedy Night</span><br /><br />
+			<span id="content-detail">
+				This annual event will feature great comedians like Jimmy Carr, Rowan Atkins and a special appearance by Chris Rock Don’t miss this night of a thousand laughs. For more information or booking Call:<br />
+				Susan@ 0754998521<br />
+				Alan@ 07446862123 standard UK mobile charges apply.
+			</span>
+		</div>
+    </div>
+	
+    <div id="divider"></div>
+	
+    <!-- Sidebar -->
+    <div class="sidebar">
+		<div id="sidebar-title">Latest News</div>
+        <ul class="tabs">
+			<li>
+				<a href="" class="sidebar-btn">
+					<div class="event-calendar">
+						<h5>Nov</h5>
+						<h3>18</h3>
+					</div>
+					<strong>Fundraiser Dinner</strong>
+					<p>This is event's descriptions</p>
+				</a>
+			</li>
+            <hr />
+			<li>
+				<a href="" class="sidebar-btn">
+					<div class="event-calendar">
+						<h5>Dec</h5>
+						<h3>31</h3>
+					</div>
+					<strong>New Year Party</strong>
+					<p>This is event's descriptions This is event's descriptions This is event's descriptions</p>
+				</a>
+			</li>
+            <hr />
+			<li>
+				<a href="" class="sidebar-btn">
+					<div class="event-calendar">
+						<h5>Feb</h5>
+						<h3>02</h3>
+					</div>
+					<strong>Comedy Night</strong>
+					<p>This is event's descriptions This is event's descriptions This is event's descriptions</p>
+				</a>
+			</li>
+		</ul>
+    </div>
+	<script type="text/javascript" src="<?php echo JS_HOME. 'jquery.tools.min.js' ?>"></script>
+    <script type="text/javascript">
+    $(function() {
+		$("ul.tabs").tabs("div.panes > div");
+    });
+    </script>
+</div>

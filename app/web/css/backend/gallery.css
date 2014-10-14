@@ -1,0 +1,101 @@
+/*
+** <<< Photo Gallery - CSS >>> **
+** This CSS file is for Picture Gallery only **
+*/
+/* === Gallery Container - Main === */
+.gallery-container{width:580px;margin:0px;padding-top:10px;}
+/*
+=== Gallery Header ===
+*/
+#gallery-header{width:580px;height:35px;margin-bottom: 0px;}
+/* -- Gallery - Left Header -- */
+#left-gal-head{float:left;margin-top:4px;}
+#left-gal-head img{padding-left:10px;padding-right:10px;}
+#left-gal-head h2{display:inline;vertical-align:top;line-height:28px;color:#666;}
+/* -- Gallery - Right Header -- */
+#right-gal-head{float:right;margin-top:8px;}
+#right-gal-head a{font-size:14px;text-decoration:none;padding-top:3px;padding-right:10px;padding-bottom:3px;padding-left:10px;background-color:#808080;color:#fff;border:1px solid #ccc;}
+#right-gal-head a:hover{font-size:14px;text-decoration:none;padding-top:3px;padding-right:10px;padding-bottom:3px;padding-left:10px;background-color:#ff2929;color:#fff;}
+/*
+=== Gallery - Input Form for [Create Album & Upload Photo & Delete Album] ===
+*/
+#create-album,#upload-photo,#delete-album{margin-left:auto;margin-right:auto;width:437px;padding-top:5px;padding-right:20px;padding-bottom:45px;padding-left:20px;display:block;border:1px solid #999;-moz-border-radius:5px;-webkit-border-radius:5px;}
+#create-album h2,#upload-photo h2{color:#808080;margin:0px;}
+#delete-album h2{color:#808080;margin:10px 0 -5px 0px;}
+/* -- Gallery - Create Album - Album Name -- */
+#album-name,#photo-bar{font-size:13px;color:#808080;margin-top:10px; margin-bottom: 5px;}
+/* -- Gallery - Create Album - Buttons -- */
+#btn-bar{float:right;font-size:14px;margin-top:6px;}
+#create-btn,#upload-btn,#delete-btn{font-family:Century Gothic;text-decoration:none;padding-top:3px;padding-right:15px;padding-bottom:3px;padding-left:15px;background-color:#666;color:#fff;border:1px solid #e5e5e5;-moz-border-radius:3px;-webkit-border-radius:3px;}
+#create-btn:hover,#upload-btn:hover,#delete-btn:hover,#submit-btn:hover{background-color:#ff2929;color:#fff;}
+#submit-btn {text-decoration:none;margin-bottom: 10px;padding-top:3px;padding-right:15px;padding-bottom:3px;padding-left:15px;background-color:#666;color:#fff;border:1px solid #e5e5e5;-moz-border-radius:3px;-webkit-border-radius:3px;}
+/*
+=== Gallery - Breakcrumb ===
+*/
+#breakcrumb{font-size: 12px;margin: 20px 0 10px 10px;color: #333333;}
+#breakcrumb a{text-decoration: none;color: #666666;}
+#breakcrumb a:hover{color: #ff2929;}
+/*
+=== Gallery - Error Messages ===
+*/
+/* -- Gallery - No file found message [Album Page] -- */
+.nofile-msg{width: 480px; margin: 100px auto; text-align: center;}
+.nofile-msg h2{color:#cccccc;}
+.nofile-msg span{font-size: 18px;color:#999999;}
+/* -- Gallery - No album found message [Delete page] -- */
+.noalbum-msg{width: 280px; margin: 50px auto 0 auto; text-align: center;}
+.noalbum-msg h2{color:#cccccc;}
+.noalbum-msg span{font-size: 18px;color:#999999;}
+/*
+=== Gallery - Index Page ===
+*/
+/* -- Gallery - Gallery Grid [Index Page] -- */
+#album-grid{margin:20px auto 20px 10px; max-width:570px;}
+#album-grid a{font-size: 14px; text-decoration: none; color: #666;}
+#album-grid a:hover{font-size: 14px; color: #ff2929;}
+/*
+=== Gallery - Album Page ===
+*/
+/* -- Thumbnail Image --*/
+.thumb-img{max-width: 120px;max-height: 120px;margin-top: 15px;padding: 6px;border: 1px solid #CCCCCC;z-index: 0;-moz-border-radius:2px;-webkit-border-radius:2px;}
+/* -- Delete Icon [Index Page] --*/
+#delete-icon{float: right; margin-right: 10px; margin-top: -5px;}
+#delete-icon a{position: absolute;opacity: 0.1;filter:alpha(opacity=10);}
+#delete-icon a:hover{opacity: 1.0;filter:alpha(opacity=100);}
+/* -- Delete Icon [Album Page] --*/
+#del-icon{float: right; margin-right: 15px;}
+#del-icon a{position: absolute;opacity: 0.1;filter:alpha(opacity=10);}
+#del-icon a:hover{opacity: 1.0;filter:alpha(opacity=100);}
+/*
+=== Gallery - Photo Page ===
+*/
+/* -- Photo Container -- */
+.photo-con{max-width: 560px;max-height: 560px;text-align: center;padding-top:30px; padding-bottom:10px; margin-left: auto;margin-right: auto;background-color: #EDEFF4;}
+.photo-con img{max-width: 560px;max-height: 560px;text-align: center;margin-left: auto;margin-right: auto;}
+/* -- Author Container -- */
+.author-container{font-size: 12px;width: 548px;height: 40px;margin: 0px auto;padding: 5px;list-style: none;background-color: #EDEFF4;border-left: 1px solid #D2D9E7;border-right: 1px solid #D2D9E7;border-bottom: 1px solid #D2D9E7;}
+.author-box{margin-top: 3px;}
+.by{display: inline; float: left; width: 25px; margin-left: 4px;}
+.author-avatar{width: 32px;height: 32px;margin-right: 8px;display: inline;}
+.author-avatar img{float: left;border: 1px solid #cccccc;margin-right: 8px;}
+.author-info{font-size: 11px;display: table-cell;width: 480px;}
+/* -- Photo Comment -- */
+ul.comment-container{font-size: 12px;width: 518px;margin: 0px auto 50px auto;list-style: none;background-color: #EDEFF4; border-left: 1px solid #D2D9E7;border-right: 1px solid #D2D9E7;border-bottom: 1px solid #D2D9E7;}
+li.comment-bar{width: 480px;background-color: #EDEFF4;border-bottom: 1px solid #D2D9E7;padding-top: 10px;}
+/* -- Photo Comment - All Comment -- */
+li.comment-bar-btm{width: 480px;background-color: #EDEFF4;padding-top: 10px;}
+li.comment-bar img{float: left;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+.avatar-block{width: 32px; height:32px; display: block;float: left;margin-right: 7px; border: 1px solid #cccccc;}
+.comment-block{display: table-cell;width: 450px; min-height: 45px;line-height: 14px;}
+.comment-block strong{float:left;color: #666666;margin-top: 1px;display: inline;}
+/* -- Date Container --*/
+.date-con{float: right; width: 150px; height: 15px;}
+#date{font-size: 11px; width:130px; height:15px; float: left;margin-top: 0px;margin-right: 5px;color: #999999;}
+#del-comment a{width:15px; height:15px; float: right; opacity: 0.1; filter:alpha(opacity=10);}
+#del-comment a:hover{width:15px; height:15px; opacity: 1.0; filter:alpha(opacity=100);}
+/* -- Comment Textarea --*/
+#comment{display:block; width:438px; margin-top:10px;margin-bottom:15px;color: #666666;clear:left; word-wrap:break-word;}
+textarea.textarea{width:432px; height:auto; margin-top:0px; resize: none; overflow:hidden; font-size: 11px; font-family: Verdana;}
+/*
+** <<< End Of Photo Gallery - CSS >>> **
+*/

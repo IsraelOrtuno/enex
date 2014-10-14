@@ -1,0 +1,79 @@
+/* Getting the new tags to behave */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block; }
+mark, rp, rt, ruby, summary, time{ display: inline }
+
+
+/* Global Structure ============================================================= */
+
+h4 {font-size:48px; line-height:1.2307em; color:#ff2929; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:normal; margin-left:-3px;}
+
+h5 {font-size:36px; line-height:1.2307em; color:#a2a2a2; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:normal; text-transform:uppercase; margin-top:-4px; padding-bottom:11px;}
+
+.slider {
+	width:924px;
+	height:394px;
+	margin:0 auto;
+	padding:0px;
+	z-index:10;
+	float:left;
+}
+.items {
+	display:none;
+}
+.play.paused {
+	color:#f00;
+}
+.banner {
+	background:url(../../images/home/box-bg.gif) 0 0 repeat;
+	width:300px;
+	min-height:168px;
+	position:absolute;
+	right:45px;
+	top:45px;
+	z-index:99;
+	padding:0;
+	
+}
+
+.pagination {
+	position:absolute;
+	width:150px;
+	height:20px;
+	padding:0 0 0 0px;
+	bottom:1px;
+	right:1px;
+	z-index:99;	
+}
+.pagination li {
+	display:inline;
+	float:right; 
+	font-size:14px; 
+	
+}
+.pagination li a {
+	width:20px;
+	height:20px;
+	display:inline-block;
+	background:url(../../images/home/unselected.png)  no-repeat;
+}
+.pagination .last {background:none; }
+.pagination li a:hover {background:url(../../images/home/selected.png)  no-repeat;}
+.pagination li.current a {
+	cursor:default;
+	background:url(../../images/home/selected.png)  no-repeat;
+}
+
+.row2 {height:432px;}
+.box {background:url(../../images/home/box-bg.gif) 0 0 repeat; height:430px; width:960px; border:1px solid #d1d1d1; margin:0px auto;}
+.box .padding {padding:18px 0px 0px 18px;}
+
+.link9 {text-decoration:none; color:#505050; font-size:18px; line-height:1.2307em; font-family:Century Gothic;  margin-top:15px; display:inline-block;}
+.link9:hover {text-decoration:none; color:#ff2929;}
+
+
+
+
+/*==========================================*/
+    
+/* Project specifics =========================================================== */
+/* Pour some CSS below ========================================================= */

@@ -1,0 +1,71 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'camera-35x25.png' ?>" width="35px" height="26px" /><h2>Photo Gallery</h2>
+        </div>
+        <div id="right-gal-head">
+            <!--<a href="index.php?c=gallery&a=deleteAlbum">- Delete Album</a>--> <a id="formbox" href="#createAlbum">+ Create Album</a>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > Picture Gallery
+    </div>
+    <!-- Create Album Form -->
+    <div style="display: none;">
+        <div id="createAlbum" style="width:480px;height:auto;overflow:auto;">
+            <form id="create-album" name="createAlbum" method="post">
+                <h2>Create Album</h2>
+                <hr size="1px" color="#cccccc" />
+                Please enter album name to create a photo album.
+                <div id="album-name"><strong>Album Name : <input type="text" name="albumname" size="50" required="required" /></strong></div>
+                <div id="btn-bar"><input type="submit" id="create-btn" value="Create" /></div>
+            </form>
+        </div>
+    </div>
+    
+    <?php
+    if (!$albums) {
+        echo '<div class="nofile-msg"><span>There is no album available</span></div>';
+    } else {
+        $i = 0;
+        $table = '<table border="0" cellpadding="4px" id="album-grid">';
+        foreach ($albums as $album) {
+            if ($i % 4 == 0) {
+                $table .= '<tr><td width="130px" align="center">';
+                if ($album->user_id == $user->user_id || $user->user_type_id == 1 || $user->user_type_id == 2) {
+                $table .= '<div id="delete-icon">
+                        <a href="index.php?c=gallery&a=index&deleteAlbum=' . $album->album_id . '" onclick="return confirm(\'Are you sure you want to delete this photo?\')">
+                            <img src="' . IMAGES_BACKEND . "close.png" . '" width="15px" height="15px" border="0" />
+                        </a>
+                    </div>';
+                }
+                $table .= '<a href="index.php?c=gallery&a=album&album=' . $album->album_id . '">
+                        <img src="' . IMAGES_BACKEND . 'folder.png" width="120px" height="97px" border="0" style="margin:10px 0px 5px 0px;" /><br />
+                        <strong>' . $album->album_name . '</strong><br />
+                        <i style="font-size:11px;">by ' . $album->first_name . ' ' . $album->last_name . '</i>
+                    </a>
+                </td>';
+            } else {
+                $table .= '<td width="130px" align="center">';
+                if ($album->user_id == $user->user_id || $user->user_type_id == 1 || $user->user_type_id == 2) {
+                $table .= '<div id="delete-icon">
+                        <a href="index.php?c=gallery&a=index&deleteAlbum=' . $album->album_id . '" onclick="return confirm(\'Are you sure you want to delete this photo?\')">
+                            <img src="' . IMAGES_BACKEND . "close.png" . '" width="15px" height="15px" border="0" />
+                        </a>
+                    </div>';
+                }
+                $table .= '<a href="index.php?c=gallery&a=album&album=' . $album->album_id . '">
+                        <img src="' . IMAGES_BACKEND . 'folder.png" width="120px" height="97px" border="0" style="margin:10px 0px 5px 0px;" /><br />
+                        <strong>' . $album->album_name . '</strong><br />
+                        <i style="font-size:11px;">by ' . $album->first_name . ' ' . $album->last_name . '</i>
+                    </a>
+                </td>';
+            }
+            $i++;
+         }
+    $table .= '</table>';
+    echo $table;
+    }
+?>
+</div>

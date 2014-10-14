@@ -1,0 +1,77 @@
+<div style="text-align:center">
+<h2>Site Statistics</h2>
+</div>
+<form action="index.php?c=user&a=sitestat" method="post">
+<select name="month">
+<option value="01" <?php if($month=='01') echo 'selected';?>>January</option>
+<option value="02" <?php if($month=='02') echo 'selected';?>>February</option>
+<option value="03" <?php if($month=='03') echo 'selected';?>>March</option>
+<option value="04" <?php if($month=='04') echo 'selected';?>>April</option>
+<option value="05" <?php if($month=='05') echo 'selected';?>>May</option>
+<option value="06" <?php if($month=='06') echo 'selected';?>>June</option>
+<option value="07" <?php if($month=='07') echo 'selected';?>>July</option>
+<option value="08" <?php if($month=='08') echo 'selected';?>>August</option>
+<option value="09" <?php if($month=='09') echo 'selected';?>>September</option>
+<option value="10" <?php if($month=='10') echo 'selected';?>>October</option>
+<option value="11" <?php if($month=='11') echo 'selected';?>>November</option>
+<option value="12" <?php if($month=='12') echo 'selected';?>>December</option>
+</select>
+<select name="year">
+<?php for($i=date('Y');$i>=date('Y')-4;$i--)echo '<option value="'.$i.'" '.($year==date('y')?'selected':'').'>'.$i.'</option>';?>
+</select>
+<input type="submit" value="Go" />
+</form>
+<h3>Site statistics by day</h3>
+<table class="data">
+<tr><th>No.</th><th>Hits</th><th>Date</th></tr>
+<?php
+$num = 1;
+foreach($byday as $k=>$v){
+	echo '<tr '.($num % 2 == 0?'class="odd"':'').'><td>'.$num.'</td><td>'.$v['cnt'].'</td><td>'.$v['thedate_visited'].'</td></td></tr>';
+	$num++;
+}
+if(empty($byday))echo '<tr><td colspan="3">There\'s no data</td></tr>';
+?>
+</table>
+
+<h3>Site statistics by Page</h3>
+<table class="data">
+<tr><th>No.</th><th>Hits</th><th>Page</th></tr>
+<?php
+$num = 1;
+foreach($bypage as $k=>$v){
+	echo '<tr '.($num % 2 == 0?'class="odd"':'').'><td>'.$num.'</td><td>'.$v['cnt'].'</td><td>'.$v['page'].'</td></td></tr>';
+	$num++;
+}
+if(empty($bypage))echo '<tr><td colspan="3">There\'s no data</td></tr>';
+?>
+</table>
+
+<h3>Site statistics by Referrer</h3>
+<table class="data">
+<tr><th>No.</th><th>Hits</th><th>Referrer</th></tr>
+<?php
+$num = 1;
+foreach($byreferrer as $k=>$v){
+	echo '<tr '.($num % 2 == 0?'class="odd"':'').'><td>'.$num.'</td><td>'.$v['cnt'].'</td><td>'.$v['from_page'].'</td></td></tr>';
+	$num++;
+}
+if(empty($byreferrer))echo '<tr><td colspan="3">There\'s no data</td></tr>';
+?>
+</table>
+
+
+<h3>Site statistics by Browser</h3>
+<table class="data">
+<tr><th>No.</th><th>Hits</th><th>Browser</th></tr>
+<?php
+$num = 1;
+foreach($bybrowser as $k=>$v){
+	echo '<tr '.($num % 2 == 0?'class="odd"':'').'><td>'.$num.'</td><td>'.$v['cnt'].'</td><td>'.$v['browser'].'</td></td></tr>';
+	$num++;
+}
+if(empty($bybrowser))echo '<tr><td colspan="3">There\'s no data</td></tr>';
+?>
+</table>
+
+<div id="dialogmenudiv" style="display:none;"><div id="dialogmenudivdata"></div></div>

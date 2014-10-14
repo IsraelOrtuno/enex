@@ -1,0 +1,86 @@
+<div class="gallery-container">
+    <div id="gallery-header">
+        <div id="left-gal-head">
+            <img src="<?php echo IMAGES_BACKEND. 'camera-35x25.png' ?>" width="35px" height="26px" /><h2>Photo Gallery</h2>
+        </div>
+        <div id="right-gal-head">
+            <?php foreach ($albums as $album) {$album_id = $album->album_id;}?><?php echo '<a href="index.php?c=gallery&a=album&album=' .  $album_id  . '">' ?>< Back to Album</a>
+        </div>
+    </div>
+    <hr />
+    <div id="breakcrumb">
+        <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=gallery&a=index">Picture Gallery</a> >
+        <?php foreach ($albums as $album) {$album_id = $album->album_id; $albumName = $album->album_name;}?><?php echo '<a href="index.php?c=gallery&a=album&album=' .  $album_id  . '">' ?><?php echo $albumName ?><?php echo '</a>' ?>
+    </div>
+    <div class="photo-con">
+        <?php
+            foreach ($photos as $photo) {
+                $list = '<a id="picturebox" href="' . $photo->photo_url . '"><img src="' . $photo->photo_url . '" class="photo"></a><br />';
+            }
+        ?>
+        <?php echo $list; ?>
+    </div>
+    
+    <div class="author-container">
+        <div class="by">By:</div>
+        <div class="author-box">
+            <div class="author-avatar">
+                <?php $author = '<img src="'.IMAGES_BACKEND . $album->avatar . '" width="32px" height="32px">'; echo $author; ?>
+            </div>
+            <div class="author-info">
+                <?php $info = '<strong>' . $album->first_name . ' ' . $album->last_name . '</strong><br />' . $photo->upload_date; echo $info; ?>
+            </div>
+        </div>
+    </div>
+    
+    <?php
+    if (!$comments) {
+        echo '<ul class="comment-container">';
+    } else {
+        $comm_li = '<ul class="comment-container">';
+        foreach ($comments as $comment) {
+            $comm_li .= '<li class="comment-bar">
+                            <div class="comment-box">
+                                <div class="avatar-block">
+                                    <img src="'.IMAGES_BACKEND . $comment->avatar . '" width="32px" height="32px">
+                                </div>
+                                <div class="comment-block">
+                                    <strong>' . $comment->first_name . ' ' . $comment->last_name . '</strong><div class="date-con">
+                                        <span id="date">' . $comment->submit_date . '</span>
+                                        <span id="del-comment">';
+                                if ($comment->user_id == $user->user_id || $user->user_type_id == 1 || $user->user_type_id == 2 || $album->user_id == $user->user_id) {    
+                                $comm_li .= '<a href="index.php?c=gallery&a=deleteComment&album=' . $_GET['album'] . '&photo=' . $_GET['photo'] . '&comment=' . $comment->comment_id . '" onclick="return confirm(\'Are you sure you want to delete this comment?\')">
+                                                <img src="' . IMAGES_BACKEND . "close.png" . '" width="15px" height="15px" border="0" />
+                                             </a>';}
+                           $comm_li .= '</span>
+                                </div>
+                                    <span id="comment">' . $comment->comment . '</span>
+                            </div>
+                         </li>';
+        }
+        echo $comm_li;
+    }
+    ?>
+    <li class="comment-bar-btm">
+        <div class="comment-box">
+            <div class="avatar-block">
+                <img src="<?php echo IMAGES_BACKEND.$user->avatar; ?>" width="32px" height="32px">
+            </div>
+            <div class="comment-block">
+                <form name="comment-form" method="post" onSubmit="entryCheck(this)">
+                    <textarea class="textarea" rows="2" cols="81" name="comment" placeholder="Write a comment..." required="required"></textarea><br />
+                    <div id="btn-bar"><input type="submit" name="submit" value="Submit" id="submit-btn" onclick="this.required = true;" /></div>
+                </form>
+            </div>
+        </div>
+     </li></ul>
+</div>
+<script type="text/javascript">
+function entryCheck() {
+    if(!document.getElementById('textarea').value) {
+        alert("Comment is empty!");
+        $('#textarea').focus();
+        return false;
+    }
+}
+</script>

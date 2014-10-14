@@ -1,0 +1,87 @@
+<?php $disabledAction=""; $errorMessage=""; if(count($messages) <=0 ){ $disabledAction="disabled=disabled"; $errorMessage="<div style='text-align:center'><label style='color:red'>". $error. "</label></div>"; } ?>
+<!-- ACTION PAGE HEADER --->
+<div id="im-content-header">
+    <div id="left-im-header">
+        <img src="<?php echo IMAGES_BACKEND. 'big-mail.png' ?>" />
+        <label>Messages</label>	
+    </div>
+    <div id="right-im-header">
+        <input class ="im-button-style" id="btn-message" type="button" value="<  Back to Messages" onclick="window.location = './index.php?c=im&a=index'"/>
+        <span id="action-container">
+            <input class ="im-button-style" id="btn-action" type="button" value="Action" onclick="document.getElementById('action-menu').style.display='block';"  <?php echo $disabledAction?>/>
+            <div id="action-menu">
+                 <a href="./index.php?c=im&a=actionMessage&m=<?php echo $optionSelected; ?>&v=D">Delete Messages</a>
+                <?php if($optionSelected==0){ echo "<a href='./index.php?c=im&a=actionMessage&m=$optionSelected&v=M'>Mark As Unread</a> "; } ?>
+                <?php if($optionSelected==0&& $user_type != 1 || ($optionSelected==2 && $user_type != 1)){ echo "<a href='./index.php?c=im&a=actionMessage&m=$optionSelected&v=R'>Report Message</a>"; }?>
+            </div>
+        </span>
+    </div>
+</div>
+<hr />
+<!-- ACTION HEADER  --->
+<div id="breakcrumb" style="margin-left:10px;clear:both;">
+    <a href="index.php?c=bulletinBoard">Home</a> > <a href="index.php?c=im&a=index">Messages</a> >
+        <?php if($optionSelected==0){echo "Inbox"; }else if($optionSelected==1){ echo "Sent"; }else if($optionSelected==2){ echo "IM Conversation"; }?>
+    </div>
+<hr/>
+<!-- BODY -->
+<form method="POST" id= "messageForm" name="messageForm" action="./index.php?c=im&a=actionMethod" onSubmit="return isChecked('<?php echo $view ?>')">
+    <div id="im-header-function">
+        <div id="im-content-search-container">
+            <input id="im-content-search-textbox" type="text" value="Search......" maxlength="100" onFocus="clearSearchField(this.id,'im-content-search-container')" onBlur="setSearchField(this.id,'im-content-search-container')" <?php echo $disabledAction?> />
+            <img src="<?php echo IMAGES_BACKEND. 'search.jpg' ?>" width="20"  height="20" title="search" alt="Search" />
+        </div>
+        <div id="im-panel">
+            <span><label onclick = "checkAll()" >Check All</label> | <label onclick = "unCheckAll()">Uncheck All</label></span>
+            <?php if($view=="D") { echo "<input class='form-button' name='btnDelete' type='submit' value='Delete' >";} else if($view=="M"){ echo "<input style='' class='form-button' name='btnMark' type='submit' value='Mark as Unread'>"; } else if($view=="R"){ echo "<input class='form-button' name='btnReport' type='submit' value='Report'>"; } else if($view=="V"){ echo "<input class='form-button' name='btnView' type='submit' value='View Message'>"; } ?>
+        </div>
+    </div>
+<hr />
+<div id="im-content-messages">
+<?php 
+
+echo $errorMessage;
+if(count($messages)>0){
+foreach ($messages as $message) { 
+$date = $message->unixtime;
+$date = date('M d', $date);
+?>
+  <label>
+    <div id="im-message-content">
+        <div id="im-action-checkbox" ><?php if($message->reported != 1 || $message->received == 1 ) { echo "<input id='message_id' name='message_id[]' type='checkbox' value='$message->message_id' /> " ;} ?></div>
+        <div id="im-content-details">
+            <a href="./index.php?c=im&a=viewMessage&<?php echo "m=$optionSelected&mid=$message->message_id";  ?>" style="<?php if($optionSelected==0 && $message->received == 0) {echo "background:#e4e4e4";}; ?>">
+            <div id="im-user-img">
+                <img src="<?php echo IMAGES_BACKEND. $message->avatar ?>" width="50px" height="50px" />
+            </div>
+            <div id="im-message-container">
+                <div id="im-message-details">
+                    <p><strong><?php echo $message->first_name." ". $message->last_name ?></strong></p>
+                    <div id="im-message"><?php echo $message->content ?></div>
+                </div>
+                <div id="im-message-function">
+                    <span id="im-message-time" style="float:right;margin-right:5px;"><?php echo $date ?></span>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+</label>
+<?php }} ?>
+    </form>
+</div>
+<!-- BODY -->
+<script>
+//This function is acts as a searchbox, it searches value the user when the user types the keyboard and displays the message
+//[user_search = user input]
+$('#im-content-search-textbox').keyup(function() {
+    user_search = $('#im-content-search-textbox').val();
+    if(user_search.length>0){
+        $("#im-content-messages label").not(':contains(\''+user_search+'\')').css("display", "none");
+    }else{
+        $("#im-content-messages label").css("display","block");
+    }
+   
+});
+
+</script>

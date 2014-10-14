@@ -1,0 +1,38 @@
+<div id="bulletin">
+    <div id="breadcrumb">
+        Home > <a href="index.php?c=bulletinBoard">Bulletin board</a> > <a href="#">Forbidden words</a>
+    </div>
+    <h1>Bulletin board - Forbidden words</h1>
+    <div class="form">
+        <form action="index.php?c=bulletinBoard&a=addForbiddenWord" method="POST">
+            <label for="title">Word</label>
+            <input type="text" name="word" value="" />
+            <input type="submit" value="Add new" />
+        </form>
+    </div>
+    <div class="words_list">
+        <table border="0" width="100%" cellspacing="0" cellpadding="5px">
+            <thead>
+                <tr>
+                    <th align="left" width="80%">Words list</th>
+                    <th width="20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $i = 1;
+                foreach($words as $word) {
+                ?>
+                    <tr>
+                        <td class="<?php echo $i%2==0?'odd_row':'normal_row'; ?>"><?php echo $word->word; ?></td>
+                        <td class="<?php echo $i%2==0?'odd_row':'normal_row'; ?>"align="right"><a class="delete_button" href="index.php?c=bulletinBoard&a=deleteForbiddenWord&word_id=<?php echo $word->forbidden_word_id; ?>">Delete</a></td>
+                    </tr>
+                <?php
+                    $i++;
+                }
+                ?>
+            </tbody>
+        </table>
+
+    </div>
+</div>

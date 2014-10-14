@@ -1,0 +1,24 @@
+<div id="bulletin">
+    <div id="breadcrumb">
+        Home > <a href="index.php?c=bulletinBoard">Bulletin board</a> > <a href="#">Modify topic</a>
+    </div>
+    <h1>Modifying: <?php echo $topic->title; ?></h1>
+    <?php
+    if (isset($error)) {
+    ?>
+    <div class="error">
+        <?php echo $error; ?>
+    </div>
+    <?php
+    }
+    ?>
+    <div class="form">
+        <form action="index.php?c=bulletinBoard&a=modifyTopic&topic_id=<?php echo $topic->topic_id; ?>" method="POST">
+            <label for="title">Title</label>
+            <input type="text" name="title" value="<?php echo $topic->title; ?>" />
+            <label for="message">Message</label>
+            <textarea name="message" rows="4" cols="20"><?php echo $topic->message; ?></textarea>
+            <input type="submit" value="Save changes" />
+        </form>
+    </div>
+</div>

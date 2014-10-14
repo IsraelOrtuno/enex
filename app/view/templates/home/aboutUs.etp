@@ -1,0 +1,17 @@
+<div class="slideshow">
+    <div class="box">
+        <div class="padding">
+            <div class="slider">
+                <ul class="items">
+                    <li>
+                    <img src="<?php echo IMAGES_HOME. 'slideshow/slide-1.jpg' ?>" alt="">
+                    <div class="banner">
+                        <h4>About Us</h4>
+                        Our mission is to play a role in the fight against disease of the heart and circulation, in adolescents and young people through early testing, so that it is no longer a major cause of disability and premature death.
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
